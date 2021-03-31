@@ -1,17 +1,13 @@
-import React from 'react';
-import { BrowserRouter } from "react-router-dom";
-import {StoreProvider} from './store/carStores.js';
+import carStore from '../stores/carStores';
+import CarMakeList from '../common/carMakes';
 import './App.css';
 
 function App() {
+  const store = new carStore();
   return (
-    <StoreProvider>
-      <BrowserRouter>
-        <div className="carStores">
-          
-        </div>
-      </BrowserRouter>
-    </StoreProvider>
+    <div className="App">
+      <CarMakeList store={store} />
+    </div>
   );
 }
 
