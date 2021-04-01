@@ -1,13 +1,13 @@
-import {nanoid} from 'nanoid'
 import React from 'react';
 import {observer} from 'mobx-react';
 
 
 function CarMakeList({store}) {
     const handleAddCarMake = () => {
+        const carMakeId = prompt("Car make ID")
         const carMakeName = prompt("Name of car make");
         const carMakeAbrv = prompt("Abbreviation");
-        store.createCarMake({id: nanoid(), carMakeName, carMakeAbrv})
+        store.createCarMake({id: carMakeId, carMakeName, carMakeAbrv})
     };
 
     const handleUpdateCarMake = (carMake) => {
