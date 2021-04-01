@@ -10,7 +10,7 @@ function CarModelList({store}) {
         const carModelFuel = prompt("Enter Car Model Fuel");
         const carModelInfo = prompt("Enter Car Model Info");
         const carModel = store.createCarModel({id: carModelId, carModelName, carModelFuel, carModelInfo})
-        store.assignCarMakeToCarModel(carMakeId, carModelId);
+        store.assignCarMakeToCarModel(carMakeId, carModel.id);
     };
 
     const handleUpdateCarModel = (carModel) => {

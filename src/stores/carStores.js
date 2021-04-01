@@ -80,6 +80,7 @@ class carStore {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1 && update) {
             this.carsMake[carMakeIndexAtId] = update;
+            return this.carsMake[carMakeIndexAtId];
         }
     }
 
@@ -87,13 +88,20 @@ class carStore {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1 && update) {
             this.carsModel[carModelIndexAtId] = update;
+            return this.carsModel[carModelIndexAtId]
         }
     }
 
     deleteCarMake(carMakeId) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
-            this.carsMake.splice(carMakeIndexAtId, 1)
+            this.carsMake.splice(carMakeIndexAtId, 1);
+            this.carsModel = this.carsModel.map((carModel) => {
+                if (carModel.carsMake && carModel.carsMake.id === carMakeId) {
+                    carModel.carMake = null;
+                }
+                return carModel;
+            })
         }
     }
 
@@ -106,6 +114,13 @@ class carStore {
     
     // Assign car models to car makes
     assignCarMakeToCarModel(carMakeId, carModelId) {
+        const carModelAtIndex = this.carsModel.find(
+            (carModel) => parseInt(carModel.it) === parseInt(carModelId));
+        const carMakeAtIndex = this.carsMake.find(
+            (carMake) => parseInt(carMake.id) === parseInt(carMakeId));
+        if (carModelAtIndex && carMakeAtIndex) {
+            carModelAtIndex.carMake = carMakeAtIndex;
+        }
     }
         
 
