@@ -45,8 +45,11 @@ function CarModelList({store}) {
                         return (
                             <tr key={carModel.id}>
                                 <td>{carModel.id}</td>
-                                <td>{carModel.carMake ? `${carModel.carMake?.carMakeId}`: "---"}
+                                <td>{carModel.carMake 
+                                ? `${carModel.carMake?.carMakeName} ${carModel.carMake?.carMakeId}`
+                                : "---"}
                                 </td>
+
                                 <td>{carModel.carModelName}</td>
                                 <td>{carModel.carModelFuel}</td>
                                 <td>{carModel.carModelInfo}</td>

@@ -47,7 +47,7 @@ function CarMakeList({store}) {
                 })}
             </tbody>
         </table>  
-        <button onClick={handleAddCarMake}>+ New Car Make</button>
+        <button onClick={handleAddCarMake}>New Car Make</button>
     </div>
     )
 
