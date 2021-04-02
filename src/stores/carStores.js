@@ -136,16 +136,16 @@ class carStore {
         console.log(this.storeDetails);
     }
 
-    sortDirection = -1
+    sortDirection = 1
 
     sortedModelNames() {
-        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase()) ? 1  : -1 ) * this.sortDirection)
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase()) ? 1  : -1 ) * this.sortDirection)
     };
 
-    sortFuelDirection = -1
+    sortFuelDirection = 1
 
     sortedModelFuel() {
-        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase()) ) )
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase()) ? 1 : -1) * this.sortFuelDirection)
     };
 
 };
