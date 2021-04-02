@@ -28,6 +28,14 @@ function CarModelList({store}) {
         store.deleteCarModel(carModel.id);
     }
 
+    const handleSorting = () => {
+        store.sortedModelNames()
+    }
+
+    const handleFuelSorting = () => {
+        store.sortedModelFuel()
+    }
+
     return (
         <div>
             <table>
@@ -45,8 +53,8 @@ function CarModelList({store}) {
                         return (
                             <tr key={carModel.id}>
                                 <td>{carModel.id}</td>
-                                <td>{carModel.carMake 
-                                ? `${carModel.carMake?.carMakeName} ${carModel.carMake?.carMakeId}`
+                                <td>{carModel.carsMake 
+                                ? `${carModel.carsMake?.carMakeName} ${carModel.carsMake?.carMakeId}`
                                 : "---"}
                                 </td>
 
@@ -64,6 +72,8 @@ function CarModelList({store}) {
                 </tbody>
             </table>
             <button onClick={handleAddCarModel}>Add new model</button>
+            <button onClick={handleSorting}>Sort by model name</button>
+            <button onClick={handleFuelSorting}>Sort by fuel type</button>
         </div>
         );
 

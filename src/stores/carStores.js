@@ -46,7 +46,11 @@ class carStore {
             updateCarModel: action,
             deleteCarMake: action,
             deleteCarModel: action,
-            assignCarMakeToCarModel: action
+            assignCarMakeToCarModel: action,
+            sortedModelNames: action,
+            sortDirection: observable,
+            sortedModelFuel: action,
+            sortFuelDirection: observable
         });
         autorun(this.logStoreDetails);
 
@@ -131,6 +135,18 @@ class carStore {
     logStoreDetails = () => {
         console.log(this.storeDetails);
     }
+
+    sortDirection = -1
+
+    sortedModelNames() {
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase()) ? 1  : -1 ) * this.sortDirection)
+    };
+
+    sortFuelDirection = -1
+
+    sortedModelFuel() {
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase()) ) )
+    };
 
 };
 
