@@ -48,9 +48,9 @@ class carStore {
             deleteCarModel: action,
             assignCarMakeToCarModel: action,
             sortedModelNames: action,
-            sortDirection: observable,
             sortedModelFuel: action,
-            sortFuelDirection: observable
+            reverseSortedModelNames: action,
+            reverseSortedModelFuel: action,
         });
         autorun(this.logStoreDetails);
 
@@ -119,7 +119,7 @@ class carStore {
     // Assign car models to car makes
     assignCarMakeToCarModel(carMakeId, carModelId) {
         const carModelAtIndex = this.carsModel.find(
-            (carModel) => parseInt(carModel.it) === parseInt(carModelId));
+            (carModel) => parseInt(carModel.id) === parseInt(carModelId));
         const carMakeAtIndex = this.carsMake.find(
             (carMake) => parseInt(carMake.id) === parseInt(carMakeId));
         if (carModelAtIndex && carMakeAtIndex) {
@@ -136,16 +136,20 @@ class carStore {
         console.log(this.storeDetails);
     }
 
-    sortDirection = 1
-
     sortedModelNames() {
-        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase()) ? 1  : -1 ) * this.sortDirection)
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase())))
     };
 
-    sortFuelDirection = 1
-
     sortedModelFuel() {
-        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase()) ? 1 : -1) * this.sortFuelDirection)
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase())))
+    };
+
+    reverseSortedModelNames() {
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase())))
+    };
+
+    reverseSortedModelFuel() {
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
     };
 
 };

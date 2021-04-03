@@ -35,7 +35,15 @@ function CarModelList({store}) {
     const handleFuelSorting = () => {
         store.sortedModelFuel()
     }
+    
+    const handleReverseSorting = () => {
+        store.reverseSortedModelNames()
+    }
 
+    const handleReverseFuelSorting = () => {
+        store.reverseSortedModelFuel()
+    }
+    
     return (
         <div>
             <table>
@@ -43,8 +51,13 @@ function CarModelList({store}) {
                     <tr>
                         <th>Car Model Id</th>
                         <th>Car Make</th>
-                        <th>Car Model Name</th>
-                        <th>Car Model Fuel</th>
+                        <th>Car Model Name
+                            <button onClick={handleSorting}>&uarr;</button>
+                            <button onClick={handleReverseSorting}>&darr;</button>                     
+                        </th>
+                        <th>Fuel Type
+                            <button onClick={handleFuelSorting}>&uarr;</button>
+                            <button onClick={handleReverseFuelSorting}>&darr;</button></th>
                         <th>Car Model Info</th>
                     </tr>
                 </thead>
@@ -70,10 +83,11 @@ function CarModelList({store}) {
                             );
                     })}
                 </tbody>
+                <tfoot>
+                            <button onClick={handleAddCarModel}>Add new model</button>  
+                </tfoot>
             </table>
-            <button onClick={handleAddCarModel}>Add new model</button>
-            <button onClick={handleSorting}>Sort by model name</button>
-            <button onClick={handleFuelSorting}>Sort by fuel type</button>
+
         </div>
         );
 
