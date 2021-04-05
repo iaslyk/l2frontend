@@ -93,7 +93,7 @@ function CarModelList({store}) {
             </table>
 
         </div>
-        );
+    );
 
 };
 

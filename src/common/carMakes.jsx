@@ -21,6 +21,7 @@ function CarMakeList({store}) {
     }
     return (
     <div>
+        <p className="storeDetails">{store.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -60,6 +61,6 @@ function CarMakeList({store}) {
 
 }
 
-// <p className="storeDetails">{store.storeDetails}</p>
+// 
 
 export default observer(CarMakeList);

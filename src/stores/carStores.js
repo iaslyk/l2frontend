@@ -57,30 +57,36 @@ class carStore {
 
     }
 
+    // Get total number of car makes
     get totalCarsMake() {
         return this.carsMake.length;
     }
 
+    // Get total number of car models
     get totalCarsModel() {
         return this.carsModel.length;
     }
 
+    // Get models using carMakeId
     getCarsModelByMake(carMakeId) {
         return this.carsModel.filter((carModel) => {
             return carModel.carMake && carModel.carMake.id === carMakeId;
         });
     }
 
+    // Create car make
     createCarMake(carMake = {id: 0, carMakeName: "", carMakeAbrv: ""}) {
         this.carsMake.push(carMake);
         return carMake;
     }
 
+    // Create car model
     createCarModel(carModel = {id: 0, carMakeId: null, carModelName: "", carModelFuel: "", carModelInfo: ""}) {
         this.carsModel.push(carModel);
         return carModel;
     }
 
+    // Update car make
     updateCarMake(carMakeId, update) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1 && update) {
@@ -89,6 +95,7 @@ class carStore {
         }
     }
 
+    // Update car model
     updateCarModel(carModelId, update) {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1 && update) {
@@ -97,6 +104,7 @@ class carStore {
         }
     }
 
+    // Delete car make
     deleteCarMake(carMakeId) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
@@ -110,6 +118,7 @@ class carStore {
         }
     }
 
+    // Delete car model
     deleteCarModel(carModelId) {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1) {
@@ -122,13 +131,13 @@ class carStore {
         const carModelAtIndex = this.carsModel.find(
             (carModel) => carModel.id === carModelId);
         const carMakeAtIndex = this.carsMake.find(
-            (carMake) => parseInt(carMake.id) === carMakeId);
+            (carMake) => carMake.id === carMakeId);
         if (carModelAtIndex && carMakeAtIndex) {
             carModelAtIndex.carMake = carMakeAtIndex;
         }
     }
         
-
+    // Get numbers of car makes, and car models we have
     get storeDetails() {
         return `We have ${this.totalCarsMake} car makes and ${this.totalCarsModel} car models`
     }
