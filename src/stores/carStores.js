@@ -52,6 +52,9 @@ class carStore {
             sortedModelFuel: action,
             reverseSortedModelNames: action,
             reverseSortedModelFuel: action,
+            filterName: observable,
+            filteredNames: computed,
+
         });
         autorun(this.logStoreDetails);
 
@@ -161,6 +164,13 @@ class carStore {
     reverseSortedModelFuel() {
         return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
     };
+
+    filterName = "";
+
+    get filteredNames() {
+        const filteredNamesList = new RegExp(this.filter, "i")
+        return this.carsModel.filter(carModel => carModel !== null).filter(carModel => !this.filter || filteredNamesList.test(carModel.carModelName));
+    }
 
 };
 
