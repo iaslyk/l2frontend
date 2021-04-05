@@ -15,6 +15,7 @@ class carStore {
         { id: 3, carMakeName: "Rimac Automobili", carMakeAbrv: "Rimac"},
         { id: 4, carMakeName: "General Motors Company", carMakeAbrv: "GM"},
         { id: 5, carMakeName: "Fiat Chrysler Automobiles N.V.", carMakeAbrv: "FCA"}];
+    
     carsModel = [
                 {id: 0, carMakeId: 0, carModelName: "Z4", carModelFuel: "Petrol", carModelInfo: "There are no more limits to driving pleasure in the BMW Z4 Roadster. A roadster that could not be any better: open, sporty and thrilling. With powerful driving dynamics and progressive design, it has only one aim: freedom between the road and sky."},
                 {id: 1, carMakeId: 0, carModelName: "i3", carModelFuel: "Electric", carModelInfo: "Get in and experience the future at your fingertips. The BMW i3 is full of innovative technologies it can use to confidently master your day-to-day life. It is always ready for the road and to explore new avenues. With style and a trend-setting design for electrifying driving pleasure."},
@@ -46,36 +47,49 @@ class carStore {
             updateCarModel: action,
             deleteCarMake: action,
             deleteCarModel: action,
-            assignCarMakeToCarModel: action
+            assignCarMakeToCarModel: action,
+            sortedModelNames: action,
+            sortedModelFuel: action,
+            reverseSortedModelNames: action,
+            reverseSortedModelFuel: action,
+            filterName: observable,
+            filteredNames: computed,
+
         });
         autorun(this.logStoreDetails);
 
     }
 
+    // Get total number of car makes
     get totalCarsMake() {
         return this.carsMake.length;
     }
 
+    // Get total number of car models
     get totalCarsModel() {
         return this.carsModel.length;
     }
 
+    // Get models using carMakeId
     getCarsModelByMake(carMakeId) {
         return this.carsModel.filter((carModel) => {
             return carModel.carMake && carModel.carMake.id === carMakeId;
         });
     }
 
+    // Create car make
     createCarMake(carMake = {id: 0, carMakeName: "", carMakeAbrv: ""}) {
         this.carsMake.push(carMake);
         return carMake;
     }
 
+    // Create car model
     createCarModel(carModel = {id: 0, carMakeId: null, carModelName: "", carModelFuel: "", carModelInfo: ""}) {
         this.carsModel.push(carModel);
         return carModel;
     }
 
+    // Update car make
     updateCarMake(carMakeId, update) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1 && update) {
@@ -84,6 +98,7 @@ class carStore {
         }
     }
 
+    // Update car model
     updateCarModel(carModelId, update) {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1 && update) {
@@ -92,6 +107,7 @@ class carStore {
         }
     }
 
+    // Delete car make
     deleteCarMake(carMakeId) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
@@ -105,6 +121,7 @@ class carStore {
         }
     }
 
+    // Delete car model
     deleteCarModel(carModelId) {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1) {
@@ -115,21 +132,44 @@ class carStore {
     // Assign car models to car makes
     assignCarMakeToCarModel(carMakeId, carModelId) {
         const carModelAtIndex = this.carsModel.find(
-            (carModel) => parseInt(carModel.it) === parseInt(carModelId));
+            (carModel) => carModel.id === carModelId);
         const carMakeAtIndex = this.carsMake.find(
-            (carMake) => parseInt(carMake.id) === parseInt(carMakeId));
+            (carMake) => carMake.id === carMakeId);
         if (carModelAtIndex && carMakeAtIndex) {
             carModelAtIndex.carMake = carMakeAtIndex;
         }
     }
         
-
+    // Get numbers of car makes, and car models we have
     get storeDetails() {
         return `We have ${this.totalCarsMake} car makes and ${this.totalCarsModel} car models`
     }
 
     logStoreDetails = () => {
         console.log(this.storeDetails);
+    }
+
+    sortedModelNames() {
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase())))
+    };
+
+    sortedModelFuel() {
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase())))
+    };
+
+    reverseSortedModelNames() {
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase())))
+    };
+
+    reverseSortedModelFuel() {
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
+    };
+
+    filterName = "";
+
+    get filteredNames() {
+        const filteredNamesList = new RegExp(this.filter, "i")
+        return this.carsModel.filter(carModel => carModel !== null).filter(carModel => !this.filter || filteredNamesList.test(carModel.carModelName));
     }
 
 };

@@ -21,9 +21,9 @@ function CarMakeList({store}) {
     }
     return (
     <div>
-        <p>{store.storeDetails}</p>
+        <p className="storeDetails">{store.storeDetails}</p>
         <table>
-            <thead>
+            <thead className="tableMakeHead">
                 <tr>
                     <th>Id</th>
                     <th>Car Make Name</th>
@@ -31,7 +31,7 @@ function CarMakeList({store}) {
                     <th></th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody className="tableMakeBody">
                 {store.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
@@ -39,18 +39,28 @@ function CarMakeList({store}) {
                             <td>{carMake.carMakeName}</td>
                             <td>{carMake.carMakeAbrv}</td>
                             <td>
-                                <button onClick={() => handleDeleteCarMake(carMake)}>Delete {carMake.carMakeName}</button>
-                                <button onClick={() => handleUpdateCarMake(carMake)}>Update {carMake.carMakeName}</button>                           
+                                <button onClick={() => handleUpdateCarMake(carMake)} className="buttonUpdate">Update {carMake.carMakeAbrv}</button>                           
+                                
+                            </td>
+                            <td>
+                            <button onClick={() => handleDeleteCarMake(carMake)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
                             </td>
                         </tr>
                     )
                 })}
             </tbody>
+            <tfoot className="tableMakeFooter">
+                <td></td>
+                <td></td>
+            <button onClick={handleAddCarMake} className="buttonAddCar">New Car Make</button>
+            </tfoot>
         </table>  
-        <button onClick={handleAddCarMake}>New Car Make</button>
+        
     </div>
     )
 
 }
+
+// 
 
 export default observer(CarMakeList);

@@ -1,7 +1,197 @@
 .App {
-  text-align: flex;
+    background-color: lightgoldenrodyellow;
 }
 
-.carStores {
-  text-align: flex;
+.Header{
+  text-align: center;
 }
+
+
+.storeMake{
+  text-align: center;
+}
+
+.storeDetails{
+  text-align: center;
+}
+
+.storeModelTitle{
+  text-align: center;
+}
+
+.tableMakeBody{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableMakeFooter{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.tableModelBody{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonUpdate{
+  background: #3D94F6;
+  background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  padding: 3px;
+  border: solid #337FED 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.buttonUpdate:hover{
+  border: solid #337FED 1px;
+  background: #1E62D0;
+  background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+.buttonDelete{
+  background:lightcoral;
+  background-image: -webkit-linear-gradient(top, lightcoral, #f26161);
+  background-image: -moz-linear-gradient(top, lightcoral, #f26161);
+  background-image: -ms-linear-gradient(top, lightcoral, #f26161);
+  background-image: -o-linear-gradient(top, lightcoral, #f26161);
+  background-image: -webkit-gradient(to bottom, lightcoral, #f26161);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  padding: 3px;
+  border: solid #337FED 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  min-width: 150px;
+  max-width: 150px;
+}
+
+.buttonDelete:hover{
+  border: solid lightcoral 1px;
+  background: #f26161;
+  background-image: -webkit-linear-gradient(top, #f26161, lightcoral);
+  background-image: -moz-linear-gradient(top, #f26161, lightcoral);
+  background-image: -ms-linear-gradient(top, #f26161, lightcoral);
+  background-image: -o-linear-gradient(top, #f26161, lightcoral);
+  background-image: -webkit-gradient(to bottom, #f26161, );
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+.buttonSort{
+  background: #3D94F6;
+  background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 12;
+  padding: 3px;
+  border: solid #337FED 1px;
+  display: inline-flex;
+  cursor: pointer;
+  text-align: center;
+}
+
+.buttonSort:hover{
+    border: solid #337FED 1px;
+    background: #1E62D0;
+    background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.buttonAddCar{
+  background: #3D94F6;
+  background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: black;
+  font-size: 14px;
+  padding: 3px;
+  border: solid #337FED 1px;
+  display: inline-flex;
+  cursor: pointer;
+  text-align: center;
+}
+
+.buttonAddCar:hover{
+    border: solid #337FED 1px;
+    background: #1E62D0;
+    background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+    background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 20px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.tableModelFooter{
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.Footer{
+  text-align: center;
+}
+

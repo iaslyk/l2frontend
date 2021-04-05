@@ -28,44 +28,72 @@ function CarModelList({store}) {
         store.deleteCarModel(carModel.id);
     }
 
+    const handleSorting = () => {
+        store.sortedModelNames()
+    }
+
+    const handleFuelSorting = () => {
+        store.sortedModelFuel()
+    }
+    
+    const handleReverseSorting = () => {
+        store.reverseSortedModelNames()
+    }
+
+    const handleReverseFuelSorting = () => {
+        store.reverseSortedModelFuel()
+    }
+    
     return (
         <div>
             <table>
-                <thead>
+                <thead className="tableModelHead">
                     <tr>
                         <th>Car Model Id</th>
                         <th>Car Make</th>
-                        <th>Car Model Name</th>
-                        <th>Car Model Fuel</th>
+                        <th>Car Model Name <br />
+                            <button onClick={handleSorting} className="buttonSort">&uarr;</button>
+                            <button onClick={handleReverseSorting} className="buttonSort">&darr;</button>                     
+                        </th>
+                        <th>Fuel Type <br />
+                            <button onClick={handleFuelSorting} className="buttonSort">&uarr;</button>
+                            <button onClick={handleReverseFuelSorting} className="buttonSort">&darr;</button></th>
                         <th>Car Model Info</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="tableModelBody">
                     {store.carsModel.map((carModel) => {
                         return (
-                            <tr key={carModel.id}>
-                                <td>{carModel.id}</td>
-                                <td>{carModel.carMake 
-                                ? `${carModel.carMake?.carMakeName} ${carModel.carMake?.carMakeId}`
-                                : "---"}
+                            <tr key={carModel.id} className="tableModelBody">
+                                <td className="tableModelBody">{carModel.id}</td>
+                                <td>{carModel.carMake ?
+                                `${carModel.carMake?.id}` : "Ne Radi"}   
                                 </td>
-
                                 <td>{carModel.carModelName}</td>
                                 <td>{carModel.carModelFuel}</td>
                                 <td>{carModel.carModelInfo}</td>
                                
+                                <td >
+                                <button onClick={() => handleUpdateCarModel(carModel)} className="buttonUpdate">Update {carModel.carModelName}</button>
+                                </td>
                                 <td>
-                                    <button onClick={() => handleDeleteCarModel(carModel)}>Delete {carModel.carModelName}</button>
-                                    <button onClick={() => handleUpdateCarModel(carModel)}>Update {carModel.carModelName}</button>
+                                <button onClick={() => handleDeleteCarModel(carModel)} className="buttonDelete">Delete {carModel.carModelName}</button>
                                 </td>
                             </tr>
                             );
                     })}
                 </tbody>
+                <tfoot className="tableModelFooter">
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                            <button onClick={handleAddCarModel} className="buttonAddCar">Add new model</button>  
+                </tfoot>
             </table>
-            <button onClick={handleAddCarModel}>Add new model</button>
+
         </div>
-        );
+    );
 
 };
 
