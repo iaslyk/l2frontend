@@ -15,6 +15,7 @@ class carStore {
         { id: 3, carMakeName: "Rimac Automobili", carMakeAbrv: "Rimac"},
         { id: 4, carMakeName: "General Motors Company", carMakeAbrv: "GM"},
         { id: 5, carMakeName: "Fiat Chrysler Automobiles N.V.", carMakeAbrv: "FCA"}];
+    
     carsModel = [
                 {id: 0, carMakeId: 0, carModelName: "Z4", carModelFuel: "Petrol", carModelInfo: "There are no more limits to driving pleasure in the BMW Z4 Roadster. A roadster that could not be any better: open, sporty and thrilling. With powerful driving dynamics and progressive design, it has only one aim: freedom between the road and sky."},
                 {id: 1, carMakeId: 0, carModelName: "i3", carModelFuel: "Electric", carModelInfo: "Get in and experience the future at your fingertips. The BMW i3 is full of innovative technologies it can use to confidently master your day-to-day life. It is always ready for the road and to explore new avenues. With style and a trend-setting design for electrifying driving pleasure."},
@@ -119,9 +120,9 @@ class carStore {
     // Assign car models to car makes
     assignCarMakeToCarModel(carMakeId, carModelId) {
         const carModelAtIndex = this.carsModel.find(
-            (carModel) => parseInt(carModel.id) === parseInt(carModelId));
+            (carModel) => carModel.id === carModelId);
         const carMakeAtIndex = this.carsMake.find(
-            (carMake) => parseInt(carMake.id) === parseInt(carMakeId));
+            (carMake) => parseInt(carMake.id) === carMakeId);
         if (carModelAtIndex && carMakeAtIndex) {
             carModelAtIndex.carMake = carMakeAtIndex;
         }
