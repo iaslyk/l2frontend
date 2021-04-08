@@ -74,6 +74,8 @@ function CarModelList({store}) {
                                 return carModel
                             } else if (carModel.carModelName.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
                                 return carModel
+                            }else if (carModel.carModelFuel.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                                return carModel
                             }
                         }
                     ).map((carModel) => {
