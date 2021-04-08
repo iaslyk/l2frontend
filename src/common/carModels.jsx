@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { observer } from 'mobx-react';
 
 
+
 function CarModelList({store}) {
+
+    const [searchTerm, setSearchTerm] = useState("")
+
     const handleAddCarModel = () => {
         const carModelId = prompt("Enter Car Model ID");
         const carMakeId = prompt("Enter Car Make ID");
@@ -46,6 +50,7 @@ function CarModelList({store}) {
     
     return (
         <div>
+            <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
             <table>
                 <thead className="tableModelHead">
                     <tr>
@@ -62,7 +67,16 @@ function CarModelList({store}) {
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {store.carsModel.map((carModel) => {
+                    {store.carsModel.filter(
+                        // eslint-disable-next-line array-callback-return
+                        (carModel) => {
+                            if (searchTerm === "") {
+                                return carModel
+                            } else if (carModel.carModelName.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
+                                return carModel
+                            }
+                        }
+                    ).map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td className="tableModelBody">{carModel.id}</td>
