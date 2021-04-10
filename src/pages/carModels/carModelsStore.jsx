@@ -7,15 +7,7 @@ import {
 } from 'mobx';
 
 
-class carStore {
-    carsMake = [            
-        { id: 0, carMakeName: "Bayerische Motoren Werke AG", carMakeAbrv: "BMW"},
-        { id: 1, carMakeName: "Volkswagen", carMakeAbrv: "VW"},
-        { id: 2, carMakeName: "Toyota Motor Corporation", carMakeAbrv: "Toyota"},
-        { id: 3, carMakeName: "Rimac Automobili", carMakeAbrv: "Rimac"},
-        { id: 4, carMakeName: "General Motors Company", carMakeAbrv: "GM"},
-        { id: 5, carMakeName: "Fiat Chrysler Automobiles N.V.", carMakeAbrv: "FCA"}];
-    
+class carModelsStore {
     carsModel = [
                 {id: 0, carMakeId: 0, carModelName: "Z4", carModelFuel: "Petrol", carModelInfo: "There are no more limits to driving pleasure in the BMW Z4 Roadster. A roadster that could not be any better: open, sporty and thrilling. With powerful driving dynamics and progressive design, it has only one aim: freedom between the road and sky."},
                 {id: 1, carMakeId: 0, carModelName: "i3", carModelFuel: "Electric", carModelInfo: "Get in and experience the future at your fingertips. The BMW i3 is full of innovative technologies it can use to confidently master your day-to-day life. It is always ready for the road and to explore new avenues. With style and a trend-setting design for electrifying driving pleasure."},
@@ -35,17 +27,11 @@ class carStore {
 
     constructor(){
         makeObservable(this, {
-            carsMake: observable,
             carsModel: observable,
-            totalCarsMake: computed,
             totalCarsModel: computed,
-            storeDetails: computed,
             getCarsModelByMake: action,
-            createCarMake: action,
             createCarModel: action,
-            updateCarMake: action,
             updateCarModel: action,
-            deleteCarMake: action,
             deleteCarModel: action,
             assignCarMakeToCarModel: action,
             sortedModelNames: action,
@@ -74,11 +60,6 @@ class carStore {
         });
     }
 
-    // Create car make
-    createCarMake(carMake = {id: 0, carMakeName: "", carMakeAbrv: ""}) {
-        this.carsMake.push(carMake);
-        return carMake;
-    }
 
     // Create car model
     createCarModel(carModel = {id: 0, carMakeId: null, carModelName: "", carModelFuel: "", carModelInfo: ""}) {
@@ -86,14 +67,7 @@ class carStore {
         return carModel;
     }
 
-    // Update car make
-    updateCarMake(carMakeId, update) {
-        const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
-        if (carMakeIndexAtId > -1 && update) {
-            this.carsMake[carMakeIndexAtId] = update;
-            return this.carsMake[carMakeIndexAtId];
-        }
-    }
+
 
     // Update car model
     updateCarModel(carModelId, update) {
@@ -104,19 +78,7 @@ class carStore {
         }
     }
 
-    // Delete car make
-    deleteCarMake(carMakeId) {
-        const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
-        if (carMakeIndexAtId > -1) {
-            this.carsMake.splice(carMakeIndexAtId, 1);
-            this.carsModel = this.carsModel.map((carModel) => {
-                if (carModel.carsMake && carModel.carsMake.id === carMakeId) {
-                    carModel.carMake = null;
-                }
-                return carModel;
-            })
-        }
-    }
+ 
 
     // Delete car model
     deleteCarModel(carModelId) {
@@ -164,7 +126,7 @@ class carStore {
 
 };
 
-export default carStore;
+export default carModelsStore;
 
 
 
