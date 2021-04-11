@@ -58,19 +58,13 @@ class carMakesStore {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
             this.carsMake.splice(carMakeIndexAtId, 1);
-            this.carsModel = this.carsModel.map((carModel) => {
-                if (carModel.carsMake && carModel.carsMake.id === carMakeId) {
-                    carModel.carMake = null;
-                }
-                return carModel;
-            })
         }
     }
 
         
     // Get numbers of car makes, and car models we have
     get storeDetails() {
-        return `We have ${this.totalCarsMake} car makes and ${this.totalCarsModel} car models`
+        return `We have ${this.totalCarsMake} car makes.`
     }
 
     logStoreDetails = () => {

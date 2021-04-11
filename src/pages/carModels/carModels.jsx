@@ -9,23 +9,17 @@ function CarModelList({store}) {
 
     const handleAddCarModel = () => {
         const carModelId = prompt("Enter Car Model ID");
-        const carMakeId = prompt("Enter Car Make ID");
         const carModelName = prompt("Enter Car Model Name");
         const carModelFuel = prompt("Enter Car Model Fuel");
         const carModelInfo = prompt("Enter Car Model Info");
-        const carModel = store.createCarModel({id: carModelId, carModelName, carModelFuel, carModelInfo})
-        store.assignCarMakeToCarModel(carMakeId, carModel.id);
+        store.createCarModel({id: carModelId, carModelName, carModelFuel, carModelInfo})
     };
 
     const handleUpdateCarModel = (carModel) => {
         carModel.carModelName = prompt("Enter Car Model Name", carModel.carModelName);
         carModel.carModelFuel = prompt("Enter Car Model Fuel", carModel.carModelFuel);
         carModel.carModelInfo = prompt("Enter Car Model Info", carModel.carModelInfo);
-        const carMakeId = prompt("Enter Car Make ID", carModel.carMake?.id);
         store.updateCarModel(carModel.id, carModel);
-        if (carMakeId !== carModel.carMake?.id) {
-            store.assignCarMakeToCarModel(carMakeId, carModel.id)
-        }
     };
 
     const handleDeleteCarModel = (carModel) => {
@@ -50,12 +44,11 @@ function CarModelList({store}) {
     
     return (
         <div>
+            <p className="storeDetails">{store.storeDetails}</p>
             <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
             <table>
                 <thead className="tableModelHead">
                     <tr>
-                        <th>Car Model Id</th>
-                        <th>Car Make</th>
                         <th>Car Model Name <br />
                             <button onClick={handleSorting} className="buttonSort">&uarr;</button>
                             <button onClick={handleReverseSorting} className="buttonSort">&darr;</button>                     
@@ -81,10 +74,6 @@ function CarModelList({store}) {
                     ).map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
-                                <td className="tableModelBody">{carModel.id}</td>
-                                <td>{carModel.carMake ?
-                                `${carModel.carMake?.id}` : "Ne Radi"}   
-                                </td>
                                 <td>{carModel.carModelName}</td>
                                 <td>{carModel.carModelFuel}</td>
                                 <td>{carModel.carModelInfo}</td>
@@ -103,8 +92,8 @@ function CarModelList({store}) {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                            <button onClick={handleAddCarModel} className="buttonAddCar">Add new model</button>  
+                    <button onClick={handleAddCarModel} className="buttonAddCar">Add new model</button>  
+                            
                 </tfoot>
             </table>
 
