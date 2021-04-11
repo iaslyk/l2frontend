@@ -1,11 +1,13 @@
 import React from 'react';
+import NavigationBar from './navBar'
 
 const HeaderPage = () => {
    return (
    <div className="Header">
-       <h1>
-           Car Show Store
-       </h1>
+        <h4>
+           <NavigationBar />
+        </h4>
+
     </div>)
 };
 

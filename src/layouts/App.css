@@ -1,9 +1,29 @@
 .App {
     background-color: lightgoldenrodyellow;
+    text-align: center;
 }
 
 .Header{
-  text-align: center;
+  display: center;
+}
+
+.NavigationBar{
+  width: 97%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.NavBarLinks{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  list-style: none;
+}
+
+.Links{
+  color: #1E62D0;
 }
 
 

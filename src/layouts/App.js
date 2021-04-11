@@ -1,25 +1,23 @@
-import CarMakeList from '../pages/carMakes/carMakes';
-import carMakesStore from '../pages/carMakes/carMakesStore';
-import carModelsStore from '../pages/carModels/carModelsStore';
-import CarModelList from '../pages/carModels/carModels'
 import HeaderPage from '../layouts/header';
 import FooterPage from '../layouts/footer';
+import CarMakesPage from '../pages/carMakes/carMakesPage';
+import CarModelsPage from '../pages/carModels/carModelsPage'
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 
 function App() {
-  const carMakeStore = new carMakesStore();
-  const carModelStore = new carModelsStore();
   return (
+    <BrowserRouter>
     <div className="App">
-        <HeaderPage />
-      <h2 className="storeMake">Car Makes</h2>
-        <CarMakeList store={carMakeStore} />
-      <hr />
-      <hr />
-      <h2 className="storeModelTitle">Car Models</h2>
-       <CarModelList store={carModelStore} />
+      <HeaderPage />
+        <Switch>
+          <Route path="/" exact component={CarMakesPage}/>
+          <Route path="/carmodels" component={CarModelsPage} />
+        </Switch>
       <FooterPage />
+
     </div>
+    </BrowserRouter>
   );
 }
 
