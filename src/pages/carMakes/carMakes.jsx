@@ -1,18 +1,10 @@
 import React from 'react';
 import {observer} from 'mobx-react';
+import {Link} from 'react-router-dom';
 
 
 function CarMakeList({store}) {
-    const handleAddCarMake = () => {
-        const carMakeId = prompt("Car make ID")
-        const carMakeName = prompt("Name of car make");
-        const carMakeAbrv = prompt("Abbreviation");
-        store.createCarMake({id: carMakeId, carMakeName, carMakeAbrv})
-    };
-
     const handleUpdateCarMake = (carMake) => {
-        carMake.carMakeName = prompt("Car Make Name", carMake.carMakeName);
-        carMake.carMakeAbrv = prompt("Car Make Abbreviation", carMake.carMakeAbrv);
         store.updateCarMake(carMake.id, carMake);
     }
 
@@ -52,7 +44,12 @@ function CarMakeList({store}) {
             <tfoot className="tableMakeFooter">
                 <td></td>
                 <td></td>
-            <button onClick={handleAddCarMake} className="buttonAddCar">New Car Make</button>
+                <br></br>
+            <Link to="/addcarmake">
+                <button className="buttonUpdate">
+                    Add Car Make
+                </button>
+            </Link>
             </tfoot>
         </table>  
         
