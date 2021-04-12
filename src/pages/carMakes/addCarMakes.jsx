@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../layouts/App.css';
-import { observer } from 'mobx-react';
 
 function AddCarMake(carMakesStore) {
   const add = (e) => {
@@ -25,9 +24,9 @@ function AddCarMake(carMakesStore) {
 					              ref={carMakesStore.newCarMakeAbrv}
 				          />
                 </form>
-            <button className="button saveNewButton" onClick={add}><Link to="/">Save New CarMake</Link></button>
-			      <Link to="/"><button className="button closeNewButton">Close New Vehicle Editor</button></Link>
+            <button className="buttonUpdate" onClick={add}><Link to="/">Save New Car Make</Link></button>
+			      <Link to="/"><button className="buttonDelete">Close New Make Editor</button></Link>
     </div>
   );
 };
-export default observer(AddCarMake);
+export default AddCarMake;

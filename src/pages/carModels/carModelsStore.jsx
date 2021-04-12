@@ -101,7 +101,7 @@ class carModelsStore {
         
     // Get numbers of car makes, and car models we have
     get storeDetails() {
-        return `We have${this.totalCarsModel} car models`
+        return `We have ${this.totalCarsModel} car models`
     }
 
     logStoreDetails = () => {

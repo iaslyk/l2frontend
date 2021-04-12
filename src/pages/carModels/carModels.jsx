@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
 import { observer } from 'mobx-react';
+import {Link} from 'react-router-dom';
 
 
 
 function CarModelList({store}) {
 
     const [searchTerm, setSearchTerm] = useState("")
-
-    const handleAddCarModel = () => {
-        const carModelId = prompt("Enter Car Model ID");
-        const carModelName = prompt("Enter Car Model Name");
-        const carModelFuel = prompt("Enter Car Model Fuel");
-        const carModelInfo = prompt("Enter Car Model Info");
-        store.createCarModel({id: carModelId, carModelName, carModelFuel, carModelInfo})
-    };
-
     const handleUpdateCarModel = (carModel) => {
         carModel.carModelName = prompt("Enter Car Model Name", carModel.carModelName);
         carModel.carModelFuel = prompt("Enter Car Model Fuel", carModel.carModelFuel);
@@ -92,8 +84,11 @@ function CarModelList({store}) {
                     <td></td>
                     <td></td>
                     <td></td>
-                    <button onClick={handleAddCarModel} className="buttonAddCar">Add new model</button>  
-                            
+                    <Link to="/addcarmodel">
+                        <button className="buttonUpdate">
+                            Add Car Model
+                        </button>
+                    </Link>
                 </tfoot>
             </table>
 
