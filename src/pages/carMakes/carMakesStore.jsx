@@ -37,13 +37,9 @@ class carMakesStore {
 
 
     // Create car make
-    createCarMake(carMake = {id: 0, carMakeName: "", carMakeAbrv: ""}) {
-        this.carsMake.push({
-            id: ++this.lastId,
-            carMakeName: this.newCarMakeName.current.value,
-            carMakeAbrv: this.newCarMakeAbrv.current.value
-        });
-        return carMake;
+    createCarMake = (id, carMakeName, carMakeAbrv) => {
+        this.carsMake.push(id, carMakeName, carMakeAbrv
+        );
     }
 
 

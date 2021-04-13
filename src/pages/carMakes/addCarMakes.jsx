@@ -1,17 +1,19 @@
 import React from 'react';
+import {inject, observer} from 'mobx-react'
 import { Link } from 'react-router-dom';
 import '../../layouts/App.css';
 
-function AddCarMake(carMakesStore) {
+const AddCarMake = ({carMakesStore}) => {
   const add = (e) => {
     e.preventDefault();
-    carMakesStore.createCarMake(carMakesStore.carMakeName.current.value)
+    carMakesStore.createCarMake(carMakesStore.newCarMakeName.current.value)
+    carMakesStore.createCarMake(carMakesStore.newCarMakeAbrv.current.value)
   }
-
   return (
     <div className="App">
-      
-            <h2 className="addCarMake">Add Car Make</h2>
+            
+            <h2 className="addCarMake" onSubmit={e => add(e)}>Add Car Make</h2>
+            <p className="storeDetails">{carMakesStore.storeDetails}</p>
                 <form>
                   <input className="addInput"
 				              	type="text"
@@ -23,10 +25,11 @@ function AddCarMake(carMakesStore) {
 					              placeholder="Make Abbreviation"
 					              ref={carMakesStore.newCarMakeAbrv}
 				          />
+                  <button className="buttonUpdate">Save New Car Make</button>
                 </form>
-            <button className="buttonUpdate" onClick={add}><Link to="/">Save New Car Make</Link></button>
+            
 			      <Link to="/"><button className="buttonDelete">Close New Make Editor</button></Link>
     </div>
   );
 };
-export default AddCarMake;
+export default inject('carMakesStore') (observer(AddCarMake));
