@@ -4,39 +4,36 @@ import {Link} from 'react-router-dom';
 
 
 
-function CarModelList({carModelsStore}) {
+function CarModelList({stores}) {
 
     const [searchTerm, setSearchTerm] = useState("")
     const handleUpdateCarModel = (carModel) => {
-        carModel.carModelName = prompt("Enter Car Model Name", carModel.carModelName);
-        carModel.carModelFuel = prompt("Enter Car Model Fuel", carModel.carModelFuel);
-        carModel.carModelInfo = prompt("Enter Car Model Info", carModel.carModelInfo);
-        carModelsStore.updateCarModel(carModel.id, carModel);
+        stores.carModelsStore.updateCarModel(carModel.id, carModel);
     };
 
     const handleDeleteCarModel = (carModel) => {
-        carModelsStore.deleteCarModel(carModel.id);
+        stores.carModelsStore.deleteCarModel(carModel.id);
     }
 
     const handleSorting = () => {
-        carModelsStore.sortedModelNames()
+        stores.carModelsStore.sortedModelNames()
     }
 
     const handleFuelSorting = () => {
-        carModelsStore.sortedModelFuel()
+        stores.carModelsStore.sortedModelFuel()
     }
     
     const handleReverseSorting = () => {
-        carModelsStore.reverseSortedModelNames()
+        stores.carModelsStore.reverseSortedModelNames()
     }
 
     const handleReverseFuelSorting = () => {
-        carModelsStore.reverseSortedModelFuel()
+        stores.carModelsStore.reverseSortedModelFuel()
     }
     
     return (
         <div>
-            <p className="storeDetails">{carModelsStore.storeDetails}</p>
+            <p className="storeDetails">{stores.carModelsStore.storeDetails}</p>
             <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
             <table>
                 <thead className="tableModelHead">
@@ -48,11 +45,13 @@ function CarModelList({carModelsStore}) {
                         <th>Fuel Type <br />
                             <button onClick={handleFuelSorting} className="buttonSort">&uarr;</button>
                             <button onClick={handleReverseFuelSorting} className="buttonSort">&darr;</button></th>
+                        <th>Car Make</th>
                         <th>Car Model Info</th>
+
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {carModelsStore.carsModel.filter(
+                    {stores.carModelsStore.carsModel.filter(
                         // eslint-disable-next-line array-callback-return
                         (carModel) => {
                             if (searchTerm === "") {
@@ -68,7 +67,9 @@ function CarModelList({carModelsStore}) {
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
                                 <td>{carModel.carModelFuel}</td>
+                                <td>{carModel.carMakeAtIndex}</td>
                                 <td>{carModel.carModelInfo}</td>
+                                
                                
                                 <td >
                                 <button onClick={() => handleUpdateCarModel(carModel)} className="buttonUpdate">Update {carModel.carModelName}</button>
@@ -98,7 +99,7 @@ function CarModelList({carModelsStore}) {
 
 };
 
-export default inject('carModelsStore') (observer(CarModelList));
+export default inject('stores') (observer(CarModelList));
 
 
 

@@ -1,19 +1,19 @@
 import React from 'react';
-import {observer} from 'mobx-react';
+import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 
-function CarMakeList({store}) {
+function CarMakeList({stores}) {
     const handleUpdateCarMake = (carMake) => {
-        store.updateCarMake(carMake.id, carMake);
+        stores.carMakesStore.updateCarMake(carMake.id, carMake);
     }
 
     const handleDeleteCarMake = (carMake) => {
-        store.deleteCarMake(carMake.id)
+        stores.carMakesStore.deleteCarMake(carMake.id)
     }
     return (
     <div>
-        <p className="storeDetails">{store.storeDetails}</p>
+        <p className="storesDetails">{stores.carMakesStore.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -24,7 +24,7 @@ function CarMakeList({store}) {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {store.carsMake.map((carMake) => {
+                {stores.carMakesStore.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             
@@ -60,4 +60,4 @@ function CarMakeList({store}) {
 
 // 
 
-export default observer(CarMakeList);
+export default inject('stores') (observer(CarMakeList));

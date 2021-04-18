@@ -7,7 +7,7 @@ import stores from './stores/store'
 
 
 const Root = (
-    <Provider carMakesStore={stores.carMakesStore} carModelsStore={stores.carModelsStore}>
+    <Provider stores={stores} carMakesStore={stores.carMakesStore} carModelsStore={stores.carModelsStore}>
       <App />
       </Provider>
   )

@@ -6,11 +6,13 @@ import {
 } from 'mobx';
 import React from 'react';
 
-class carMakesStore {
+class CarMakesStore {
     constructor(){
         makeObservable(this, {
             carsMake: observable,
             lastId: observable,
+            carMakeNameEdit: observable,
+            carMakeAbrvEdit: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
             totalCarsMake: computed,
@@ -18,6 +20,7 @@ class carMakesStore {
             createCarMake: action,
             updateCarMake: action,
             deleteCarMake: action,
+            editCarMake: action,
                 })
 
     }
@@ -34,6 +37,8 @@ class carMakesStore {
     lastId = this.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
+    carMakeNameEdit = React.createRef();
+    carMakeAbrvEdit = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -75,6 +80,11 @@ class carMakesStore {
         return `We have ${this.totalCarsMake} car makes.`
     }
 
+    editCarMake = (carMakeId) => {
+        this.carsMake[carMakeId].carMakeName = this.carMakeNameEdit.current.value;
+        this.carsMake[carMakeId].carMakeAbrv = this.carMakeAbrvEdit.current.value;
+    }
+
     logStoreDetails = () => {
         console.log(this.storeDetails);
     }
@@ -82,7 +92,7 @@ class carMakesStore {
 
 };
 
-export default new carMakesStore();
+export default new CarMakesStore();
 
 
 
