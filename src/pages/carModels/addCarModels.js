@@ -1,18 +1,20 @@
+import { inject, observer } from 'mobx-react';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../layouts/App.css';
 
-function AddCarModel(carModelsStore) {
+const AddCarModel = ({carModelsStore}) => {
     const add = (e) => {
       e.preventDefault();
-      carModelsStore.createCarMake(carModelsStore.carModelName.current.value)
+      carModelsStore.createCarModel(carModelsStore.newCarModelName.current.value)
     }
   
     return (
       <div className="App">
         
               <h2 className="addCarMake">Add Car Model</h2>
-                  <form>
+              <p className="storeDetails">{carModelsStore.storeDetails}</p>
+                  <form className="addCarMake">
                     <input className="addInput"
                           type="text"
                           placeholder="Model Name"
@@ -28,11 +30,12 @@ function AddCarModel(carModelsStore) {
                           placeholder="Model Info"
                           ref={carModelsStore.newCarModelInfo}
                     />
+                    <button className="buttonUpdate" onClick={add}><Link to="/carmodels">Save New Car Model</Link></button>
                   </form>
-              <button className="buttonUpdate" onClick={add}><Link to="/carmodels">Save New Car Model</Link></button>
+              
               <Link to="/carmodels"><button className="buttonDelete">Close New Model Editor</button></Link>
       </div>
     );
 };
 
-export default AddCarModel;
+export default inject('carModelsStore') (observer(AddCarModel));

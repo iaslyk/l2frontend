@@ -1,15 +1,18 @@
 import carModelsStore from './carModelsStore';
 import CarModelList from './carModels'
 import '../../layouts/App.css';
+import { Component } from 'react';
+import { observer } from 'mobx-react';
 
-function CarModelsPage() {
-  const carModelStore = new carModelsStore();
+class CarModelsPage extends Component {
+  render(){
   return (
     <div className="App">
         <h2 className="storeModelTitle">Car Models</h2>
-       <CarModelList store={carModelStore} />
+       <CarModelList store={carModelsStore} />
     </div>
   );
 }
+}
 
-export default CarModelsPage;
+export default (observer(CarModelsPage));

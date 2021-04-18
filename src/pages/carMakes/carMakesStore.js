@@ -3,32 +3,37 @@ import {
     computed,
     makeObservable,
     observable,
-    autorun
 } from 'mobx';
-
+import React from 'react';
 
 class carMakesStore {
+    constructor(){
+        makeObservable(this, {
+            carsMake: observable,
+            lastId: observable,
+            newCarMakeName: observable,
+            newCarMakeAbrv: observable,
+            totalCarsMake: computed,
+            storeDetails: computed,
+            createCarMake: action,
+            updateCarMake: action,
+            deleteCarMake: action,
+                })
+
+    }
+
     carsMake = [            
         { id: "0", carMakeName: "Bayerische Motoren Werke AG", carMakeAbrv: "BMW"},
         { id: "1", carMakeName: "Volkswagen", carMakeAbrv: "VW"},
         { id: "2", carMakeName: "Toyota Motor Corporation", carMakeAbrv: "Toyota"},
         { id: "3", carMakeName: "Rimac Automobili", carMakeAbrv: "Rimac"},
         { id: "4", carMakeName: "General Motors Company", carMakeAbrv: "GM"},
-        { id: "5", carMakeName: "Fiat Chrysler Automobiles N.V.", carMakeAbrv: "FCA"}];
-    
+        { id: "5", carMakeName: "Fiat Chrysler Automobiles N.V.", carMakeAbrv: "FCA"},
+    ];
 
-    constructor(){
-        makeObservable(this, {
-            carsMake: observable,
-            totalCarsMake: computed,
-            storeDetails: computed,
-            createCarMake: action,
-            updateCarMake: action,
-            deleteCarMake: action,
-                });
-        autorun(this.logStoreDetails);
-
-    }
+    lastId = this.carsMake.slice(-1)[0].id;
+    newCarMakeName = React.createRef();
+    newCarMakeAbrv = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -38,7 +43,10 @@ class carMakesStore {
 
     // Create car make
     createCarMake = (id, carMakeName, carMakeAbrv) => {
-        this.carsMake.push(id, carMakeName, carMakeAbrv
+        this.carsMake.push({
+            id: ++this.lastId,
+            carMakeName: this.newCarMakeName.current.value, 
+            carMakeAbrv: this.newCarMakeAbrv.current.value}
         );
     }
 
@@ -74,7 +82,7 @@ class carMakesStore {
 
 };
 
-export default carMakesStore;
+export default new carMakesStore();
 
 
 

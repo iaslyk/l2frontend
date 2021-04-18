@@ -6,8 +6,10 @@ import CarModelsPage from '../pages/carModels/carModelsPage'
 import AddCarModel from '../pages/carModels/addCarModels';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
+import { Component } from 'react';
 
-function App() {
+class App extends Component {
+  render() {
   return (
     <BrowserRouter>
     <div className="App">
@@ -21,8 +23,10 @@ function App() {
       <FooterPage />
 
     </div>
+
     </BrowserRouter>
   );
+}
 }
 
 export default App;
