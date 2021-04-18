@@ -1,42 +1,42 @@
 import React, { useState } from 'react';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 
 
-function CarModelList({store}) {
+function CarModelList({carModelsStore}) {
 
     const [searchTerm, setSearchTerm] = useState("")
     const handleUpdateCarModel = (carModel) => {
         carModel.carModelName = prompt("Enter Car Model Name", carModel.carModelName);
         carModel.carModelFuel = prompt("Enter Car Model Fuel", carModel.carModelFuel);
         carModel.carModelInfo = prompt("Enter Car Model Info", carModel.carModelInfo);
-        store.updateCarModel(carModel.id, carModel);
+        carModelsStore.updateCarModel(carModel.id, carModel);
     };
 
     const handleDeleteCarModel = (carModel) => {
-        store.deleteCarModel(carModel.id);
+        carModelsStore.deleteCarModel(carModel.id);
     }
 
     const handleSorting = () => {
-        store.sortedModelNames()
+        carModelsStore.sortedModelNames()
     }
 
     const handleFuelSorting = () => {
-        store.sortedModelFuel()
+        carModelsStore.sortedModelFuel()
     }
     
     const handleReverseSorting = () => {
-        store.reverseSortedModelNames()
+        carModelsStore.reverseSortedModelNames()
     }
 
     const handleReverseFuelSorting = () => {
-        store.reverseSortedModelFuel()
+        carModelsStore.reverseSortedModelFuel()
     }
     
     return (
         <div>
-            <p className="storeDetails">{store.storeDetails}</p>
+            <p className="storeDetails">{carModelsStore.storeDetails}</p>
             <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
             <table>
                 <thead className="tableModelHead">
@@ -52,7 +52,7 @@ function CarModelList({store}) {
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {store.carsModel.filter(
+                    {carModelsStore.carsModel.filter(
                         // eslint-disable-next-line array-callback-return
                         (carModel) => {
                             if (searchTerm === "") {
@@ -79,6 +79,7 @@ function CarModelList({store}) {
                             </tr>
                             );
                     })}
+
                 </tbody>
                 <tfoot className="tableModelFooter">
                     <td></td>
@@ -97,4 +98,7 @@ function CarModelList({store}) {
 
 };
 
-export default observer(CarModelList);
+export default inject('carModelsStore') (observer(CarModelList));
+
+
+
