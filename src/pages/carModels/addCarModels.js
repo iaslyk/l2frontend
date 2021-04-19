@@ -33,7 +33,8 @@ const AddCarModel = ({stores}) => {
                     <select className="dropdown">
                       {stores.carMakesStore.carsMake.map((carMake) => {
                         return (
-                          <option value={carMake.id} ref={stores.carMakesStore.carMake}>{carMake.carMakeAbrv}</option>
+                          <option value={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel} key={carMake.id}
+                          >{carMake.carMakeAbrv}</option>
                         )
                       })}
                       

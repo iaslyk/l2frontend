@@ -8,7 +8,7 @@ import React from 'react';
 
 
 class CarModelsStore {
-    constructor(){
+    constructor(props){
         makeObservable(this, {
             carsModel: observable,
             lastId: observable,
@@ -51,6 +51,7 @@ class CarModelsStore {
         ];
     
     lastId = this.carsModel.slice(-1)[0].id;
+
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
@@ -68,13 +69,13 @@ class CarModelsStore {
 
 
     // Create car model
-    createCarModel = (id, carModelName, carModelFuel, carModelInfo) => {
+    createCarModel = (id, carModelName, carModelFuel, carModelInfo, carMake) => {
         this.carsModel.push({
             id: ++this.lastId,
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
-            
+            carMake: this.carMakeModel.current.value
         });
     }
 
