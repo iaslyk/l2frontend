@@ -29,7 +29,7 @@ class CarModelsStore {
             hasPrev: computed,
             loadNextPage: action,
             loadPrevPage: action,
-            setCarMake: action,
+            carMakeModel: observable,
         });
     }
 
@@ -54,6 +54,7 @@ class CarModelsStore {
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
+    carMakeModel = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -73,7 +74,7 @@ class CarModelsStore {
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
-    
+            
         });
     }
 
@@ -154,9 +155,6 @@ class CarModelsStore {
         }
     }
 
-    setCarMake(carMakeAbrv){
-        this.carMakeAbrv = carMakeAbrv;
-    }
 
 
 };

@@ -67,7 +67,7 @@ function CarModelList({stores}) {
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
                                 <td>{carModel.carModelFuel}</td>
-                                <td>{carModel.carMakeAtIndex}</td>
+                                <td>{carModel.carMake}</td>
                                 <td>{carModel.carModelInfo}</td>
                                 
                                

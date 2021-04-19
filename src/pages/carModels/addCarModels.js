@@ -29,11 +29,19 @@ const AddCarModel = ({stores}) => {
                           placeholder="Model Info"
                           ref={stores.carModelsStore.newCarModelInfo}
                     />
-                    <br></br>
-                    <button className="buttonUpdate" onClick={add}><Link to="/carmodels">Save New Car Model</Link></button>
+                    <h3>Choose a Car Make:</h3>
+                    <select className="dropdown">
+                      {stores.carMakesStore.carsMake.map((carMake) => {
+                        return (
+                          <option value={carMake.id} ref={stores.carMakesStore.carMake}>{carMake.carMakeAbrv}</option>
+                        )
+                      })}
+                      
+                    </select>
                   </form>
-              
-              <Link to="/carmodels"><button className="buttonDelete">Close New Model Editor</button></Link>
+                  <br></br>
+              <button className="buttonUpdate" onClick={add}><Link to="/carmodels">Save New Car Model</Link></button>
+              <button className="buttonDelete"><Link to="/carmodels">Close New Model Editor</Link></button>
       </div>
     );
 };
