@@ -8,7 +8,7 @@ import React from 'react';
 
 
 class CarModelsStore {
-    constructor(props){
+    constructor(carsModel){
         makeObservable(this, {
             carsModel: observable,
             lastId: observable,
@@ -23,13 +23,12 @@ class CarModelsStore {
             sortedModelFuel: action,
             reverseSortedModelNames: action,
             reverseSortedModelFuel: action,
-            after: observable,
-            pageSize: observable,
-            currentPage: computed,
-            hasPrev: computed,
-            loadNextPage: action,
-            loadPrevPage: action,
             carMakeModel: observable,
+            currentPage: observable,
+            modelsPerPage: observable,
+            indexOfFirstModel: observable,
+            indexOfLastModel: observable,
+            setPage: action
         });
     }
 
@@ -125,38 +124,16 @@ class CarModelsStore {
     reverseSortedModelFuel() {
         return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
     };
-    after = undefined;
-    pageSize = 5;
 
-    get currentPage() {
-        let start = this.after !== undefined ? this.carsModel.findIndex(x => x.created_at > this.after) : 0;
-        return this.carsModel.slice.call(start, start + this.pageSize);
+    currentPage = 1;
+    modelsPerPage = 5;
+    indexOfLastModel = this.currentPage * this*this.modelsPerPage;
+    indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
+    setPage = (pageNumber) => {
+        this.currentPage = pageNumber;
+        this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
+        this.indexOfLastModel = this.currentPage * this*this.modelsPerPage;
     }
-
-    get hasPrev() {
-        return this.after !== undefined;
-    }
-
-    loadNextPage = () => {
-        if (this.carsModel.length > 0)
-            this.after = this.carsModel[this.carsModel.length - 1].created_at;
-    }
-
-    loadPrevPage = () => {
-        if (!this.hasPrev)
-            return;
-        
-        const startCur = this.carsModel.findIndex(x => x.created_at > this.after);
-        const startPrev = startCur - this.pageSize;
-
-        if (startPrev <= 0) {
-            this.after = undefined;
-        } else {
-            this.after = this.carsModel[startPrev -1].created_at;
-        }
-    }
-
-
 
 };
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
+import Pagination from '../../components/pagination'
 
 
 
@@ -77,11 +78,13 @@ function CarModelList({stores}) {
                                 <td>
                                 <button onClick={() => handleDeleteCarModel(carModel)} className="buttonDelete">Delete {carModel.carModelName}</button>
                                 </td>
+
                             </tr>
                             );
                     })}
 
                 </tbody>
+
                 <tfoot className="tableModelFooter">
                     <td></td>
                     <td></td>
