@@ -4,9 +4,6 @@ import {Link} from 'react-router-dom';
 
 
 function CarMakeList({stores}) {
-    const handleUpdateCarMake = (carMake) => {
-        stores.carMakesStore.updateCarMake(carMake.id, carMake);
-    }
 
     const handleDeleteCarMake = (carMake) => {
         stores.carMakesStore.deleteCarMake(carMake.id)
@@ -31,7 +28,7 @@ function CarMakeList({stores}) {
                             <td>{carMake.carMakeName}</td>
                             <td>{carMake.carMakeAbrv}</td>
                             <td>
-                                <button onClick={() => handleUpdateCarMake(carMake)} className="buttonUpdate">Update {carMake.carMakeAbrv}</button>                           
+                                <Link exact to={`/carmakes/${carMake.id}`}><button className="buttonUpdate">Update {carMake.carMakeAbrv}</button></Link>
                                 
                             </td>
                             <td>

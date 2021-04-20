@@ -80,9 +80,9 @@ class CarMakesStore {
         return `We have ${this.totalCarsMake} car makes.`
     }
 
-    editCarMake = (carMakeId) => {
-        this.carsMake[carMakeId].carMakeName = this.carMakeNameEdit.current.value;
-        this.carsMake[carMakeId].carMakeAbrv = this.carMakeAbrvEdit.current.value;
+    editCarMake = (id) => {
+        this.carsMake[id].carMakeName = this.carMakeNameEdit.current.value;
+        this.carsMake[id].carMakeAbrv = this.carMakeAbrvEdit.current.value;
     }
 
     logStoreDetails = () => {
