@@ -10,7 +10,7 @@ const EditCarMake = ({ stores }) => {
     const [ makeAbrv, setMakeAbrv ] = useState(stores.carMakesStore.carsMake[makeId].carMakeAbrv)
 
 
-    // TODO: Fix edit functionality
+    // TODO: Fix edit functionality. useState is use as a quick workaround to check if page works
 
     const edit = (e) => {
         e.preventDefault();
