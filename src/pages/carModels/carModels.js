@@ -1,12 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 
 
 function CarModelList({stores}) {
-
-    const [searchTerm, setSearchTerm] = useState("")
 
     const handleDeleteCarModel = (carModel) => {
         stores.carModelsStore.deleteCarModel(carModel.id);
