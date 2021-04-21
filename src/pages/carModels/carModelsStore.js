@@ -28,7 +28,10 @@ class CarModelsStore {
             modelsPerPage: observable,
             indexOfFirstModel: observable,
             indexOfLastModel: observable,
-            setPage: action
+            setPage: action,
+            filteredModelsValue: observable,
+            filteredModels: computed,
+            onChangeFilterModels: action
         });
     }
 
@@ -133,6 +136,17 @@ class CarModelsStore {
         this.currentPage = pageNumber;
         this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
         this.indexOfLastModel = this.currentPage * this*this.modelsPerPage;
+    }
+
+    filteredModelsValue = '';
+
+    get filteredModels () {
+		let filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
+        return filteredList
+    }
+
+    onChangeFilterModels = (e) => {
+        this.filteredModelsValue = e.target.value.toLowerCase();
     }
 
 };

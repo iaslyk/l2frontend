@@ -31,7 +31,8 @@ function CarModelList({stores}) {
     return (
         <div>
             <p className="storeDetails">{stores.carModelsStore.storeDetails}</p>
-            <input type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
+            <input placeholder="Start typing model..."
+                 onKeyUp={stores.carModelsStore.onChangeFilterModels} />
             <table>
                 <thead className="tableModelHead">
                     <tr>
@@ -48,18 +49,7 @@ function CarModelList({stores}) {
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {stores.carModelsStore.carsModel.filter(
-                        // eslint-disable-next-line array-callback-return
-                        (carModel) => {
-                            if (searchTerm === "") {
-                                return carModel
-                            } else if (carModel.carModelName.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
-                                return carModel
-                            }else if (carModel.carModelFuel.toLowerCase().includes(searchTerm.toLocaleLowerCase())){
-                                return carModel
-                            }
-                        }
-                    ).map((carModel) => {
+                    {stores.carModelsStore.filteredModels.map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
