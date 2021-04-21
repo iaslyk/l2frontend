@@ -5,7 +5,6 @@ import { Link, useParams } from 'react-router-dom';
 const EditCarMake = ({ stores }) => {
     
     const { makeId } = useParams();
-    const [ id ] = useState(stores.carMakesStore.carsMake[makeId].id)
     const [ makeName, setMakeName ] = useState(stores.carMakesStore.carsMake[makeId].carMakeName)
     const [ makeAbrv, setMakeAbrv ] = useState(stores.carMakesStore.carsMake[makeId].carMakeAbrv)
 
@@ -19,25 +18,26 @@ const EditCarMake = ({ stores }) => {
       return (
         <div className="App">
                 
-                <h2>Edit car make {id} </h2>
+                <h2>Edit {stores.carMakesStore.carsMake[makeId].carMakeName}</h2>
                 <p className="storeDetails">{stores.carMakesStore.storeDetails}</p>
                     <form className="addCarMake" >
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={makeName}
+                                      defaultValue={stores.carMakesStore.carsMake[makeId].carMakeName}
                                       ref={stores.carMakesStore.carMakeNameEdit}
                                       onChange={(event) => setMakeName(stores.carMakesStore.carsMake.carMakeNameEdit)}
                               />
                               <input className="addInput"
                                       type="text"
-                                      defaultValue={makeAbrv}
+                                      defaultValue={stores.carMakesStore.carsMake[makeId].carMakeAbrv}
                                       ref={stores.carMakesStore.carMakeAbrvEdit}
                                       onChange={(event) => setMakeAbrv(stores.carMakesStore.carsMake.carMakeAbrvEdit)}
                               />
-                      <button className="buttonUpdate" onClick={edit}><Link to="/">Save New Car Make</Link></button>
+
+                      <button className="buttonUpdate" onClick={edit}><Link to="/">Save Car Make Edit</Link></button>
                     </form>
                     
-                      <Link to="/"><button className="buttonDelete">Close New Make Editor</button></Link>
+                      <Link to="/"><button className="buttonDelete">Close Make Editor</button></Link>
         </div>
       );
     };

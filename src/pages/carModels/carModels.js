@@ -7,9 +7,6 @@ import {Link} from 'react-router-dom';
 function CarModelList({stores}) {
 
     const [searchTerm, setSearchTerm] = useState("")
-    const handleUpdateCarModel = (carModel) => {
-        stores.carModelsStore.updateCarModel(carModel.id, carModel);
-    };
 
     const handleDeleteCarModel = (carModel) => {
         stores.carModelsStore.deleteCarModel(carModel.id);
@@ -72,7 +69,7 @@ function CarModelList({stores}) {
                                 
                                
                                 <td >
-                                <button onClick={() => handleUpdateCarModel(carModel)} className="buttonUpdate">Update {carModel.carModelName}</button>
+                                <Link exact to={`/carmodels/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
                                 </td>
                                 <td>
                                 <button onClick={() => handleDeleteCarModel(carModel)} className="buttonDelete">Delete {carModel.carModelName}</button>
