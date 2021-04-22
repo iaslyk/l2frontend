@@ -17,7 +17,6 @@ class CarModelsStore {
             newCarModelInfo: observable,
             totalCarsModel: computed,
             createCarModel: action,
-            updateCarModel: action,
             deleteCarModel: action,
             sortedModelNames: action,
             sortedModelFuel: action,
@@ -31,7 +30,11 @@ class CarModelsStore {
             setPage: action,
             filteredModelsValue: observable,
             filteredModels: computed,
-            onChangeFilterModels: action
+            onChangeFilterModels: action,
+            editCarModel: action,
+            carModelNameEdit: observable,
+            carModelFuelEdit: observable,
+            carModelInfoEdit: observable,
         });
     }
 
@@ -58,6 +61,9 @@ class CarModelsStore {
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
     carMakeModel = React.createRef();
+    carModelNameEdit =  React.createRef();
+    carModelFuelEdit =  React.createRef();
+    carModelInfoEdit =  React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -80,19 +86,18 @@ class CarModelsStore {
             carMake: this.carMakeModel.current.value
         });
     }
-
-
-
-    // Update car model
-    updateCarModel(carModelId, update) {
+    
+    editCarModel = (carModelId, carModelName, carModelFuel, carModelInfo, carMake) => {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
-        if (carModelIndexAtId > -1 && update) {
-            this.carsModel[carModelIndexAtId] = update;
-            return this.carsModel[carModelIndexAtId]
-        }
+        if (carModelIndexAtId > -1) {
+            this.carsModel.splice(carModelIndexAtId, 1, {
+            carModelName: this.carModelNameEdit.current.value,
+            carModelFuel: this.carModelFuelEdit.current.value,
+            carModelInfo: this.carModelInfoEdit.current.value,
+            carMake: this.carMakeModel.current.value
+        });
     }
-
- 
+}
 
     // Delete car model
     deleteCarModel(carModelId) {
@@ -113,19 +118,19 @@ class CarModelsStore {
     }
 
     sortedModelNames() {
-        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase())))
-    };
-
-    sortedModelFuel() {
-        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase())))
-    };
-
-    reverseSortedModelNames() {
         return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase())))
     };
 
-    reverseSortedModelFuel() {
+    sortedModelFuel() {
         return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
+    };
+
+    reverseSortedModelNames() {
+        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase())))
+    };
+
+    reverseSortedModelFuel() {
+        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase())))
     };
 
     currentPage = 1;
@@ -137,6 +142,8 @@ class CarModelsStore {
         this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
         this.indexOfLastModel = this.currentPage * this*this.modelsPerPage;
     }
+    
+
 
     filteredModelsValue = '';
 

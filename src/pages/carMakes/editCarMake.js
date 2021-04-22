@@ -1,15 +1,12 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link, useParams } from 'react-router-dom';
 
 const EditCarMake = ({ stores }) => {
     
     const { makeId } = useParams();
-    const [ makeName, setMakeName ] = useState(stores.carMakesStore.carsMake[makeId].carMakeName)
-    const [ makeAbrv, setMakeAbrv ] = useState(stores.carMakesStore.carsMake[makeId].carMakeAbrv)
 
-
-    // TODO: Fix edit functionality. useState is use as a quick workaround to check if page works
+    // TODO: Fix info input layout, splicing so that editing works
 
     const edit = (e) => {
         e.preventDefault();
@@ -25,15 +22,14 @@ const EditCarMake = ({ stores }) => {
                                       type="text"
                                       defaultValue={stores.carMakesStore.carsMake[makeId].carMakeName}
                                       ref={stores.carMakesStore.carMakeNameEdit}
-                                      onChange={(event) => setMakeName(stores.carMakesStore.carsMake.carMakeNameEdit)}
+                                    
                               />
                               <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carMakesStore.carsMake[makeId].carMakeAbrv}
                                       ref={stores.carMakesStore.carMakeAbrvEdit}
-                                      onChange={(event) => setMakeAbrv(stores.carMakesStore.carsMake.carMakeAbrvEdit)}
+                            
                               />
-
                       <button className="buttonUpdate" onClick={edit}><Link to="/">Save Car Make Edit</Link></button>
                     </form>
                     

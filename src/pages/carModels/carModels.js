@@ -69,6 +69,7 @@ function CarModelList({stores}) {
 
                 </tbody>
 
+
                 <tfoot className="tableModelFooter">
                     <td></td>
                     <td></td>
