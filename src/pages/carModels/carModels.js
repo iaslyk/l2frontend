@@ -1,6 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
+import Pagination from '../../components/pagination'
 
 
 
@@ -68,6 +69,11 @@ function CarModelList({stores}) {
                     })}
 
                 </tbody>
+                <Pagination
+                    modelsPerPage={stores.carModelsStore.modelsPerPage}
+                    totalCarsModel={stores.carModelsStore.totalCarsModel}
+                    paginate={stores.carModelsStore.setPage}
+                />
 
 
                 <tfoot className="tableModelFooter">

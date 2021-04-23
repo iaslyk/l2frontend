@@ -65,10 +65,6 @@ class CarModelsStore {
     carModelFuelEdit =  React.createRef();
     carModelInfoEdit =  React.createRef();
 
-    // Get total number of car makes
-    get totalCarsMake() {
-        return this.carsMake.length;
-    }
 
     // Get total number of car models
     get totalCarsModel() {
@@ -142,8 +138,9 @@ class CarModelsStore {
         this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
         this.indexOfLastModel = this.currentPage * this*this.modelsPerPage;
     }
-    
 
+    // TODO: Limit shown modelsPerPgae
+    
 
     filteredModelsValue = '';
 
