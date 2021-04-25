@@ -1,4 +1,4 @@
-import CarMakeList from './carMakes';
+import CarMakeList from './carMakeList';
 import carMakesStore from './carMakesStore';
 import '../../layouts/App.css';
 import { Component } from 'react';

@@ -1,5 +1,5 @@
 import carModelsStore from './carModelsStore';
-import CarModelList from './carModels'
+import CarModelList from './carModelList'
 import '../../layouts/App.css';
 import { Component } from 'react';
 import { observer } from 'mobx-react';
