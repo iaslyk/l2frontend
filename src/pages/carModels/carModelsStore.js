@@ -131,12 +131,12 @@ class CarModelsStore {
 
     currentPage = 1;
     modelsPerPage = 5;
-    indexOfLastModel = this.currentPage * this*this.modelsPerPage;
+    indexOfLastModel = this.currentPage * this.modelsPerPage;
     indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
     setPage = (pageNumber) => {
         this.currentPage = pageNumber;
         this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
-        this.indexOfLastModel = this.currentPage * this*this.modelsPerPage;
+        this.indexOfLastModel = this.currentPage * this.modelsPerPage;
     }
 
     // TODO: Limit shown modelsPerPgae
@@ -146,7 +146,7 @@ class CarModelsStore {
 
     get filteredModels () {
 		let filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
-        return filteredList
+        return filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
     }
 
     onChangeFilterModels = (e) => {
