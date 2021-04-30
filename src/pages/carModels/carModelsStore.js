@@ -113,20 +113,20 @@ class CarModelsStore {
         console.log(this.storeDetails);
     }
 
-    sortedModelNames() {
-        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() > a.carModelName.toLowerCase())))
+    sortedModelNames = () => {
+        return this.carsModel.sort((a, b) => (b.carModelName.toLowerCase().localeCompare(a.carModelName.toLowerCase())))
     };
 
-    sortedModelFuel() {
-        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() > a.carModelFuel.toLowerCase())))
+    sortedModelFuel = () => {
+        return this.carsModel.sort((a, b) => (b.carModelFuel.toLowerCase().localeCompare(a.carModelFuel.toLowerCase())))
     };
 
-    reverseSortedModelNames() {
-        return this.carsModel.sort((a, b) => ((b.carModelName.toLowerCase() < a.carModelName.toLowerCase())))
+    reverseSortedModelNames = () => {
+        return this.carsModel.sort((a, b) => (a.carModelName.toLowerCase().localeCompare(b.carModelName.toLowerCase())))
     };
 
-    reverseSortedModelFuel() {
-        return this.carsModel.sort((a, b) => ((b.carModelFuel.toLowerCase() < a.carModelFuel.toLowerCase())))
+    reverseSortedModelFuel = () => {
+        return this.carsModel.sort((a, b) => (a.carModelFuel.toLowerCase().localeCompare(b.carModelFuel.toLowerCase())))
     };
 
     currentPage = 1;
@@ -145,8 +145,8 @@ class CarModelsStore {
     filteredModelsValue = '';
 
     get filteredModels () {
-		let filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
-        return filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
+		this.filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
+        return this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
     }
 
     onChangeFilterModels = (e) => {
