@@ -75,7 +75,6 @@ class CarMakesStore {
             this.carsMake.splice(carMakeIndexAtId, 1, {            
                 carMakeName: this.carMakeNameEdit.current.value, 
                 carMakeAbrv: this.carMakeAbrvEdit.current.value
-
             });
         }
     }

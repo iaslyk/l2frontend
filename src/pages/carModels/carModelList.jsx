@@ -1,7 +1,7 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
-import Pagination from '../../components/pagination'
+import Pagination from './pagination'
 
 
 
