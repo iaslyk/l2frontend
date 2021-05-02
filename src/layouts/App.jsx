@@ -1,5 +1,5 @@
-import HeaderPage from '../layouts/header';
-import FooterPage from '../layouts/footer';
+import HeaderPage from './header';
+import FooterPage from './footer';
 import CarMakesPage from '../pages/carMakes/carMakesPage';
 import AddCarMake from '../pages/carMakes/addCarMakes';
 import EditCarMake from '../pages/carMakes/editCarMake'

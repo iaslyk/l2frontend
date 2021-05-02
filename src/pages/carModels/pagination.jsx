@@ -5,7 +5,7 @@ const Pagination = ({ modelsPerPage, totalCarsModel, paginate }) => {
     for (let i=1; i<=Math.ceil(totalCarsModel/modelsPerPage); i++) {
         pageNumbers.push(i);
     }
-
+    
 
     return (
         <nav>
