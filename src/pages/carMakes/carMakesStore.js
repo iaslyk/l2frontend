@@ -10,6 +10,7 @@ class CarMakesStore {
     constructor(){
         makeObservable(this, {
             carsMake: observable,
+            carsMakeHead: observable,
             lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
@@ -24,6 +25,7 @@ class CarMakesStore {
 
     }
 
+    carsMakeHead = ["Car Make Name", "Car Make Abbreviation"];
     carsMake = [            
         { id: 0, carMakeName: "Bayerische Motoren Werke AG", carMakeAbrv: "BMW"},
         { id: 1, carMakeName: "Volkswagen", carMakeAbrv: "VW"},
@@ -73,8 +75,8 @@ class CarMakesStore {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
             this.carsMake.splice(carMakeIndexAtId, 1, {            
-                carMakeName: this.carMakeNameEdit.current.value, 
-                carMakeAbrv: this.carMakeAbrvEdit.current.value
+                carMakeName: this.carMakeName.current.value, 
+                carMakeAbrv: this.carMakeAbrv.current.value
             });
         }
     }

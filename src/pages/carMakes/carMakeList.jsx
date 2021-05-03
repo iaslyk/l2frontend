@@ -1,6 +1,7 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
+import Table from '../../components/tableComponent/tableComponent'
 
 
 function CarMakeList({stores}) {
