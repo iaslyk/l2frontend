@@ -146,7 +146,8 @@ class CarModelsStore {
 
     get filteredModels () {
 		this.filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
-        return this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
+        this.filteredListSliced = this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
+        return this.filteredListSliced
     }
 
     onChangeFilterModels = (e) => {
