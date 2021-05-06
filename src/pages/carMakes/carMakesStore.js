@@ -75,8 +75,8 @@ class CarMakesStore {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
             this.carsMake.splice(carMakeIndexAtId, 1, {            
-                carMakeName: this.carMakeName.current.value, 
-                carMakeAbrv: this.carMakeAbrv.current.value
+                carMakeName: this.carMakeNameEdit.current.value, 
+                carMakeAbrv: this.carMakeAbrvEdit.current.value
             });
         }
     }
