@@ -6,8 +6,6 @@ const EditCarMake = ({ stores }) => {
     
     const { makeId } = useParams();
 
-    // TODO: Fix info input layout, splicing so that editing works
-
     const edit = (e) => {
         e.preventDefault();
         stores.carMakesStore.editCarMake(stores.carMakesStore.carMakeNameEdit.current.value)
@@ -24,7 +22,7 @@ const EditCarMake = ({ stores }) => {
                                       ref={stores.carMakesStore.carMakeNameEdit}
                                     
                               />
-                              <input className="addInput"
+                              <input className="addInput" 
                                       type="text"
                                       defaultValue={stores.carMakesStore.carsMake[makeId].carMakeAbrv}
                                       ref={stores.carMakesStore.carMakeAbrvEdit}
