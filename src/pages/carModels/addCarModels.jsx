@@ -3,10 +3,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const AddCarModel = ({stores}) => {
-    const add = (e) => {
-      e.preventDefault();
-      stores.carModelsStore.createCarModel(stores.carModelsStore.newCarModelName.current.value)
-    }
   
     return (
       <div className="App">
@@ -42,7 +38,7 @@ const AddCarModel = ({stores}) => {
                     </select>
                   </form>
                   <br></br>
-              <button className="buttonUpdate" onClick={add}><Link to="/carmodels">Save New Car Model</Link></button>
+              <button className="buttonUpdate" onClick={() => stores.carModelsStore.createCarModel(stores.carModelsStore.newCarModelName.current.value)}><Link to="/carmodels">Save New Car Model</Link></button>
               <button className="buttonDelete"><Link to="/carmodels">Close New Model Editor</Link></button>
       </div>
     );

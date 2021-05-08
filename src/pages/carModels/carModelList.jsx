@@ -5,50 +5,30 @@ import Pagination from './pagination'
 
 
 
-function CarModelList({stores}) {
+function CarModelList({carModelsStore}) {
 
-    const handleDeleteCarModel = (carModel) => {
-        stores.carModelsStore.deleteCarModel(carModel.id);
-    }
-
-    const handleSorting = () => {
-        stores.carModelsStore.sortedModelNames()
-    }
-
-    const handleFuelSorting = () => {
-        stores.carModelsStore.sortedModelFuel()
-    }
-    
-    const handleReverseSorting = () => {
-        stores.carModelsStore.reverseSortedModelNames()
-    }
-
-    const handleReverseFuelSorting = () => {
-        stores.carModelsStore.reverseSortedModelFuel()
-    }
-    
     return (
         <div>
-            <p className="storeDetails">{stores.carModelsStore.storeDetails}</p>
+            <p className="storeDetails">{carModelsStore.storeDetails}</p>
             <input placeholder="Start typing model..."
-                 onKeyUp={stores.carModelsStore.onChangeFilterModels} />
+                 onKeyUp={carModelsStore.onChangeFilterModels} />
             <table>
                 <thead className="tableModelHead">
                     <tr>
                         <th>Car Model Name <br />
-                            <button onClick={handleSorting} className="buttonSort">&uarr;</button>
-                            <button onClick={handleReverseSorting} className="buttonSort">&darr;</button>                     
+                            <button onClick={() => carModelsStore.sortedModelNames()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => carModelsStore.reverseSortedModelNames()} className="buttonSort">&darr;</button>                     
                         </th>
                         <th>Fuel Type <br />
-                            <button onClick={handleFuelSorting} className="buttonSort">&uarr;</button>
-                            <button onClick={handleReverseFuelSorting} className="buttonSort">&darr;</button></th>
+                            <button onClick={() => carModelsStore.sortedModelFuel()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => carModelsStore.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
                         <th>Car Make</th>
                         <th>Car Model Info</th>
 
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {stores.carModelsStore.filteredModels.map((carModel) => {
+                    {carModelsStore.filteredModels.map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
@@ -61,7 +41,7 @@ function CarModelList({stores}) {
                                 <Link exact to={`/carmodels/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
                                 </td>
                                 <td>
-                                <button onClick={() => handleDeleteCarModel(carModel)} className="buttonDelete">Delete {carModel.carModelName}</button>
+                                <button onClick={() => carModelsStore.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>
                                 </td>
 
                             </tr>
@@ -70,9 +50,9 @@ function CarModelList({stores}) {
 
                 </tbody>
                 <Pagination
-                    modelsPerPage={stores.carModelsStore.modelsPerPage}
-                    totalCarsModel={stores.carModelsStore.totalCarsModel}
-                    paginate={stores.carModelsStore.setPage}
+                    modelsPerPage={carModelsStore.modelsPerPage}
+                    totalCarsModel={carModelsStore.totalCarsModel}
+                    paginate={carModelsStore.setPage}
                 />
 
 
@@ -93,7 +73,7 @@ function CarModelList({stores}) {
 
 };
 
-export default inject('stores') (observer(CarModelList));
+export default inject('carModelsStore') (observer(CarModelList));
 
 
 

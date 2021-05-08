@@ -1,17 +1,12 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
-import Table from '../../components/tableComponent/tableComponent'
 
 
-function CarMakeList({stores}) {
-
-    const handleDeleteCarMake = (carMake) => {
-        stores.carMakesStore.deleteCarMake(carMake.id)
-    }
+function CarMakeList({carMakesStore}) {
     return (
     <div>
-        <p className="storesDetails">{stores.carMakesStore.storeDetails}</p>
+        <p className="storesDetails">{carMakesStore.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -22,7 +17,7 @@ function CarMakeList({stores}) {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {stores.carMakesStore.carsMake.map((carMake) => {
+                {carMakesStore.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             
@@ -33,7 +28,7 @@ function CarMakeList({stores}) {
                                 
                             </td>
                             <td>
-                            <button onClick={() => handleDeleteCarMake(carMake)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
+                            <button onClick={() => carMakesStore.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
                             </td>
                         </tr>
                     )
@@ -58,4 +53,4 @@ function CarMakeList({stores}) {
 
 // 
 
-export default inject('stores') (observer(CarMakeList));
+export default inject('carMakesStore') (observer(CarMakeList));

@@ -5,13 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 const EditCarModel = ({ stores }) => {
     
     const { modelId } = useParams();
-
-    // TODO: Fix info input layout, splicing so that editing works
-
-    const edit = (e) => {
-        e.preventDefault();
-        stores.carModelsStore.editCarModel(stores.carModelsStore.newCarModelName.current.value)
-      }
+    
       return (
         <div className="App">
                 
@@ -46,7 +40,7 @@ const EditCarModel = ({ stores }) => {
                         )
                       })}
                       </select>
-                      <button className="buttonUpdate" onClick={edit}><Link to="/carmodels">Save Car Model Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.newCarModelName.current.value)}><Link to="/carmodels">Save Car Model Edit</Link></button>
                     </form>
                     
                       <Link to="/"><button className="buttonDelete">Close Model Editor</button></Link>
