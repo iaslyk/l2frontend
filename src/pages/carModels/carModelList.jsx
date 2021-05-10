@@ -24,7 +24,6 @@ function CarModelList({carModelsStore}) {
                             <button onClick={() => carModelsStore.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
                         <th>Car Make</th>
                         <th>Car Model Info</th>
-
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">

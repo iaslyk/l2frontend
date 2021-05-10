@@ -26,12 +26,12 @@ const AddCarModel = ({stores}) => {
                           ref={stores.carModelsStore.newCarModelInfo}
                     />
                     <h3>Choose a Car Make:</h3>
-                    <select className="dropdown">
+                    <select className="dropdown" onChange={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
                       {stores.carMakesStore.carsMake.map((carMake) => {
                         return (
-                          // Need to add onChange event to select component
-                          <option value={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel} key={carMake.id}
-                          >{carMake.carMakeAbrv}</option>
+                          <option  key={carMake.id}>
+                            {carMake.carMakeAbrv}
+                          </option>
                         )
                       })}
                       

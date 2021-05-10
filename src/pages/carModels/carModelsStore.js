@@ -56,7 +56,6 @@ class CarModelsStore {
         ];
     
     lastId = this.carsModel.slice(-1)[0].id;
-
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
@@ -70,7 +69,6 @@ class CarModelsStore {
     get totalCarsModel() {
         return this.carsModel.length;
     }
-
 
     // Create car model
     createCarModel = (id, carModelName, carModelFuel, carModelInfo, carMake) => {
@@ -109,23 +107,23 @@ class CarModelsStore {
         return `We have ${this.totalCarsModel} car models`
     }
 
-    logStoreDetails = () => {
+    logStoreDetails(){
         console.log(this.storeDetails);
     }
 
-    sortedModelNames = () => {
+    sortedModelNames(){
         return this.carsModel.sort((a, b) => (b.carModelName.toLowerCase().localeCompare(a.carModelName.toLowerCase())))
     };
 
-    sortedModelFuel = () => {
+    sortedModelFuel(){
         return this.carsModel.sort((a, b) => (b.carModelFuel.toLowerCase().localeCompare(a.carModelFuel.toLowerCase())))
     };
 
-    reverseSortedModelNames = () => {
+    reverseSortedModelNames(){
         return this.carsModel.sort((a, b) => (a.carModelName.toLowerCase().localeCompare(b.carModelName.toLowerCase())))
     };
 
-    reverseSortedModelFuel = () => {
+    reverseSortedModelFuel(){
         return this.carsModel.sort((a, b) => (a.carModelFuel.toLowerCase().localeCompare(b.carModelFuel.toLowerCase())))
     };
 
@@ -133,22 +131,20 @@ class CarModelsStore {
     modelsPerPage = 5;
     indexOfLastModel = this.currentPage * this.modelsPerPage;
     indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
+    
     setPage = (pageNumber) => {
         this.currentPage = pageNumber;
         this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
         this.indexOfLastModel = this.currentPage * this.modelsPerPage;
     }
 
-    // TODO: Limit shown modelsPerPgae
-    
-
-    filteredModelsValue = '';
-
     get filteredModels () {
 		this.filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
         this.filteredListSliced = this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
         return this.filteredListSliced
     }
+
+    filteredModelsValue = '';
 
     onChangeFilterModels = (e) => {
         this.filteredModelsValue = e.target.value.toLowerCase();
@@ -157,6 +153,3 @@ class CarModelsStore {
 };
 
 export default new CarModelsStore();
-
-
-
