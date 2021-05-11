@@ -83,14 +83,12 @@ class CarModelsStore {
     
     editCarModel = (carModelId, carModelName, carModelFuel, carModelInfo, carMake) => {
         const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
-        if (carModelIndexAtId > -1) {
-            this.carsModel.splice(carModelIndexAtId, 1, {
+        this.carsModel.splice(carModelIndexAtId, 1, {
             carModelName: this.carModelNameEdit.current.value,
             carModelFuel: this.carModelFuelEdit.current.value,
             carModelInfo: this.carModelInfoEdit.current.value,
             carMake: this.carMakeModel.current.value
         });
-    }
 }
 
     // Delete car model
@@ -134,8 +132,9 @@ class CarModelsStore {
     
     setPage = (pageNumber) => {
         this.currentPage = pageNumber;
-        this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
         this.indexOfLastModel = this.currentPage * this.modelsPerPage;
+        this.indexOfFirstModel = this.indexOfLastModel - this.modelsPerPage;
+        
     }
 
     get filteredModels () {

@@ -15,19 +15,19 @@ const EditCarModel = ({ stores }) => {
                       <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelName}
-                                      ref={stores.carModelsStore.newCarModelName}
+                                      ref={stores.carModelsStore.carModelNameEdit}
                                       
                               />
                               <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelFuel}
-                                      ref={stores.carModelsStore.newCarModelFuel}
+                                      ref={stores.carModelsStore.carModelFuelEdit}
                                       
                               />
                               <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelInfo}
-                                      ref={stores.carModelsStore.newCarModelInfo}
+                                      ref={stores.carModelsStore.carModelInfoEdit}
                                       
                               />
                               <h3>Choose a Car Make:</h3>
@@ -38,7 +38,7 @@ const EditCarModel = ({ stores }) => {
                         )
                       })}
                       </select>
-                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.newCarModelName.current.value)}><Link to="/carmodels">Save Car Model Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.carModelNameEdit.current.value)}><Link to="/carmodels">Save Car Model Edit</Link></button>
                     </form>
                     
                       <Link to="/"><button className="buttonDelete">Close Model Editor</button></Link>
