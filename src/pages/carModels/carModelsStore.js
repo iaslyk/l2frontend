@@ -32,9 +32,6 @@ class CarModelsStore {
             filteredModels: computed,
             onChangeFilterModels: action,
             editCarModel: action,
-            carModelNameEdit: observable,
-            carModelFuelEdit: observable,
-            carModelInfoEdit: observable,
         });
     }
 
@@ -60,9 +57,6 @@ class CarModelsStore {
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
     carMakeModel = React.createRef();
-    carModelNameEdit =  React.createRef();
-    carModelFuelEdit =  React.createRef();
-    carModelInfoEdit =  React.createRef();
 
 
     // Get total number of car models
@@ -71,7 +65,7 @@ class CarModelsStore {
     }
 
     // Create car model
-    createCarModel = (id, carModelName, carModelFuel, carModelInfo, carMake) => {
+    createCarModel = () => {
         this.carsModel.push({
             id: ++this.lastId,
             carModelName: this.newCarModelName.current.value,
@@ -81,15 +75,12 @@ class CarModelsStore {
         });
     }
     
-    editCarModel = (carModelId, carModelName, carModelFuel, carModelInfo, carMake) => {
-        const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
-        this.carsModel.splice(carModelIndexAtId, 1, {
-            carModelName: this.carModelNameEdit.current.value,
-            carModelFuel: this.carModelFuelEdit.current.value,
-            carModelInfo: this.carModelInfoEdit.current.value,
-            carMake: this.carMakeModel.current.value
-        });
-}
+    editCarModel = (carModelName, carModelFuel, carModelInfo, carMakeModel) => {
+        this.carsModel.carModelName = carModelName;
+        this.carsModel.carModelFuel = carModelFuel;
+        this.carsModel.carModelInfo = carModelInfo;
+        this.carsModel.carMake = carMakeModel;
+    };
 
     // Delete car model
     deleteCarModel(carModelId) {

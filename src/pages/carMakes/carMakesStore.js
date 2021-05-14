@@ -14,8 +14,6 @@ class CarMakesStore {
             lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
-            carMakeNameEdit: observable,
-            carMakeAbrvEdit: observable,
             totalCarsMake: computed,
             storeDetails: computed,
             createCarMake: action,
@@ -38,8 +36,6 @@ class CarMakesStore {
     lastId = this.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
-    carMakeNameEdit = React.createRef();
-    carMakeAbrvEdit = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -48,7 +44,7 @@ class CarMakesStore {
 
 
     // Create car make
-    createCarMake = (id, carMakeName, carMakeAbrv) => {
+    createCarMake = () => {
         this.carsMake.push({
             id: ++this.lastId,
             carMakeName: this.newCarMakeName.current.value, 
@@ -71,12 +67,9 @@ class CarMakesStore {
         return `We have ${this.totalCarsMake} car makes.`
     }
 
-    editCarMake = ( carMakeId, carMakeName, carMakeAbrv) => {
-        const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
-        this.carsMake.splice(carMakeIndexAtId, 1, {            
-                carMakeName: this.carMakeNameEdit.current.value, 
-                carMakeAbrv: this.carMakeAbrvEdit.current.value
-            });
+    editCarMake(carMakeName, carMakeAbrv){
+        this.carsMake.carMakeName = carMakeName;
+        this.carsMake.carMakeAbrv = carMakeAbrv;
     }
 
     logStoreDetails = () => {

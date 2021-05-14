@@ -15,33 +15,31 @@ const EditCarModel = ({ stores }) => {
                       <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelName}
-                                      ref={stores.carModelsStore.carModelNameEdit}
-                                      
+                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelName = e.target.value)}                                      
                               />
                               <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelFuel}
-                                      ref={stores.carModelsStore.carModelFuelEdit}
-                                      
+                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelFuel = e.target.value)}                                                                            
                               />
                               <input className="addInput"
                                       type="text"
                                       defaultValue={stores.carModelsStore.carsModel[modelId].carModelInfo}
-                                      ref={stores.carModelsStore.carModelInfoEdit}
+                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelInfo = e.target.value)}                                      
                                       
                               />
                               <h3>Choose a Car Make:</h3>
-                    <select className="dropdown" onChange={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
+                      <select className="dropdown" onChange={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
                       {stores.carMakesStore.carsMake.map((carMake) => {
                         return (
                           <option key={carMake.id}>{carMake.carMakeAbrv}</option>
                         )
                       })}
                       </select>
-                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.carModelNameEdit.current.value)}><Link to="/carmodels">Save Car Model Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.carModelName)}><Link to="/carmodels">Save Car Model Edit</Link></button>
                     </form>
                     
-                      <Link to="/"><button className="buttonDelete">Close Model Editor</button></Link>
+                      <Link to="/carmodels"><button className="buttonDelete">Close Model Editor</button></Link>
         </div>
       );
     };
