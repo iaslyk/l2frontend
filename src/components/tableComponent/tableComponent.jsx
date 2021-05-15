@@ -13,8 +13,8 @@ const Table = ({ tableHeadData, tableBodyData, customClass }) => {
                 </tr>
             </thead>
             <tbody>
-                {tableBodyData.map((item) => {
-                    return <TableRow key={item.id} data={item.items} />
+                {tableBodyData.map((props) => {
+                    return <TableRow key={props.id} data={props.items} />
                 })}
             </tbody>
         </table>

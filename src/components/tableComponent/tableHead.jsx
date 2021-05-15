@@ -1,9 +1,9 @@
 import React from 'react';
 
-const TableHeadItem = ({ item }) => {
+const TableHeadItem = ({props }) => {
     return (
-        <td title={item}>
-            {item}
+        <td title={props.thName}>
+            {props.thName}
         </td>
     )
 }
