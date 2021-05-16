@@ -1,8 +1,8 @@
 // services for carsModel
 
-const CarsModelService = () =>{
-    const carsMakeHead = ["Car Model Name", "Car Model Fuel", "Car Make", "Car Model Info"];
-    const carsModel = [
+class CarsModelService {
+    carsMakeHead = ["Car Model Name", "Car Model Fuel", "Car Make", "Car Model Info"];
+    carsModel = [
         {id: 0, carMake: 0, carModelName: "Z4", carModelFuel: "Petrol", carModelInfo: "There are no more limits to driving pleasure in the BMW Z4 Roadster. A roadster that could not be any better: open, sporty and thrilling. With powerful driving dynamics and progressive design, it has only one aim: freedom between the road and sky."},
         {id: 1, carMake: 0, carModelName: "i3", carModelFuel: "Electric", carModelInfo: "Get in and experience the future at your fingertips. The BMW i3 is full of innovative technologies it can use to confidently master your day-to-day life. It is always ready for the road and to explore new avenues. With style and a trend-setting design for electrifying driving pleasure."},
         {id: 2, carMake: 0, carModelName: "530e", carModelFuel: "Hybrid ",carModelInfo: "A model athlete in the discipline of sustainability. The BMW 5 Series Sedan plug-in hybrid inspires thanks to the combination of powerful petrol engine, high-voltage battery and an electric motor from BMW eDrive technology that offers an impressive performance while simultaneously lowering fuel consumption and reducing CO2 emissions."},
@@ -18,4 +18,8 @@ const CarsModelService = () =>{
         {id: 12, carMake: 5, carModelName: "124 Spider", carModelFuel: "Petrol", carModelInfo: "Exactly 50 years later, the iconic 1960s design is back in a roadster created for pure driving pleasure: the Fiat 124 Spider."},
         {id: 13, carMake: 5, carModelName: "500", carModelFuel: "Electric", carModelInfo: "The all New 500 will be the first small car to bring Level 2 Autonomous Driving, which means a superior level of safety in the urban mobility. Your car will be your trusted co-driver: it will accelerate, brake and keep the lane autonomously."},
         ];
+    
+    
 }
+
+export default new CarsModelService();
