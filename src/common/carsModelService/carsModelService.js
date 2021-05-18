@@ -1,6 +1,7 @@
 // services for carsModel
 
 class CarsModelService {
+    /*
     carsMakeHead = ["Car Model Name", "Car Model Fuel", "Car Make", "Car Model Info"];
     carsModel = [
         {id: 0, carMake: 0, carModelName: "Z4", carModelFuel: "Petrol", carModelInfo: "There are no more limits to driving pleasure in the BMW Z4 Roadster. A roadster that could not be any better: open, sporty and thrilling. With powerful driving dynamics and progressive design, it has only one aim: freedom between the road and sky."},
@@ -18,7 +19,7 @@ class CarsModelService {
         {id: 12, carMake: 5, carModelName: "124 Spider", carModelFuel: "Petrol", carModelInfo: "Exactly 50 years later, the iconic 1960s design is back in a roadster created for pure driving pleasure: the Fiat 124 Spider."},
         {id: 13, carMake: 5, carModelName: "500", carModelFuel: "Electric", carModelInfo: "The all New 500 will be the first small car to bring Level 2 Autonomous Driving, which means a superior level of safety in the urban mobility. Your car will be your trusted co-driver: it will accelerate, brake and keep the lane autonomously."},
         ];
-    
+    */
     
 }
 
