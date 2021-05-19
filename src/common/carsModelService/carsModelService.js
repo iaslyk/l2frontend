@@ -1,6 +1,8 @@
 // services for carsModel
 
-class CarsModelService {
+import { Component } from "react";
+
+class CarsModelService extends Component {
     /*
     carsMakeHead = ["Car Model Name", "Car Model Fuel", "Car Make", "Car Model Info"];
     carsModel = [
@@ -23,4 +25,4 @@ class CarsModelService {
     
 }
 
-export default new CarsModelService();
+export default CarsModelService;

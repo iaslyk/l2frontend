@@ -5,6 +5,7 @@ import {
     observable,
 } from 'mobx';
 import React from 'react';
+import carsModelService from '../../common/carsModelService/carsModelService'
 
 
 class CarModelsStore {
@@ -34,7 +35,7 @@ class CarModelsStore {
         });
     }
 
-    
+
     lastId = this.carsModel.slice(-1)[0].id;
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
@@ -46,7 +47,7 @@ class CarModelsStore {
     get totalCarsModel() {
         return this.carsModel.length;
     }
-
+    
     // Create car model
     createCarModel = () => {
         this.carsModel.push({

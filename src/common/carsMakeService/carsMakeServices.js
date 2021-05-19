@@ -1,6 +1,7 @@
 // services for carsMake
+import { useState } from 'react';
 
-class CarsMakeService {
+function CarsMakeService () {
     /*
     carsMakeHead = ["Car Make Name", "Car Make Abbreviation"];
     carsMake = [            
@@ -13,6 +14,24 @@ class CarsMakeService {
     ];
     */
 
-}
+    const [ carsMake, setCarsMake ] = useState(null)
+    
+    // Fetch Function   
+    fetch("./carsMake.json").then(
+        function(res){
+        return res.json()
+      }).then(function(carsMake){
+      // store Data in State Data Variable
+        setCarsMake(carsMake)
+      }).catch(
+        function(err){
+          console.log(err, ' error')
+        }
+      )
 
-export default new CarsMakeService();
+      
+}
+    
+
+
+export default CarsMakeService;
