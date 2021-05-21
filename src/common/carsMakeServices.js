@@ -15,8 +15,6 @@ class CarsMakeService {
 
     // POST method
     post = async (model) => {
-        const headers = new Headers();
-        headers.append()
     }
     
 }
