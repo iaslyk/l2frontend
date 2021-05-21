@@ -1,8 +1,23 @@
 // services for carsMake
+const url = "http://localhost:3001"
 
-function CarsMakeService () {
+class CarsMakeService {
     
-    // Fetch Function
+    // GET method
+    get = async (urlParams) => {
+        const options = {
+            method: "GET",
+        }
+        const request = new Request(url + "?" + urlParams, options);
+        const response = await fetch(request);
+        return response.json();
+    }
+
+    // POST method
+    post = async (model) => {
+        const headers = new Headers();
+        headers.append()
+    }
     
 }
     

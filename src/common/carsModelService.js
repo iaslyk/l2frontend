@@ -2,7 +2,7 @@
 
 class CarsModelService {
     
-    // Fetch Function
+    // GET method
     
 }
 
