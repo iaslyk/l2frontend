@@ -5,7 +5,7 @@ import {
     observable,
 } from 'mobx';
 import React from 'react';
-import CarsMakeService from '../../common/carsMakeServices'
+import CarsMakeService from '../../common/carsMakeService'
 
 class CarMakesStore {
     constructor(){
