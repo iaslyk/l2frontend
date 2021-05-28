@@ -5,11 +5,11 @@ import {
     observable,
 } from 'mobx';
 import React from 'react';
-import carsModelService from '../../common/carsModelService/carsModelService'
-
+import CarsModelService from '../../common/carsModelService'
 
 class CarModelsStore {
     constructor(carsModel){
+        this.carsModelService = new CarsModelService();
         makeObservable(this, {
             lastId: observable,
             newCarModelName: observable,

@@ -1,7 +1,6 @@
 import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
-import CarsMakeService from '../../common/carsMakeService/carsMakeServices'
 
 
 function CarMakeList({carMakesStore}) {

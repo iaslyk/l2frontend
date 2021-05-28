@@ -5,10 +5,11 @@ import {
     observable,
 } from 'mobx';
 import React from 'react';
-import CarsMakeService from '../../common/carsMakeService/carsMakeServices'
+import CarsMakeService from '../../common/carsMakeServices'
 
 class CarMakesStore {
     constructor(){
+        this.carsMakeService = new CarsMakeService();
         makeObservable(this, {
             lastId: observable,
             newCarMakeName: observable,
@@ -19,7 +20,6 @@ class CarMakesStore {
             deleteCarMake: action,
             editCarMake: action,
                 })
-
     }
 
     lastId = this.carsMake.slice(-1)[0].id;
