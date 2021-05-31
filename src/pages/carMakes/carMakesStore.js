@@ -11,9 +11,10 @@ import CarsMakeService from '../../common/carsMakeService'
 class CarMakesStore extends React.Component{
     constructor(){
         super();
-        this.carsModelService = new CarsMakeService();
+        this.carsMakeService = new CarsMakeService();
 
         makeObservable(this, {
+
             carsMake: observable,
             lastId: observable,
             newCarMakeName: observable,
@@ -25,7 +26,7 @@ class CarMakesStore extends React.Component{
             editCarMake: action,
                 })
         }
-    
+
     carsMake= [{id: "", carMake: "", carModelName: "", carModelFuel: "", carModelInfo: ""}]
     lastId = this.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
