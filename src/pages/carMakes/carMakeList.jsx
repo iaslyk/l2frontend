@@ -3,7 +3,8 @@ import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 
-function CarMakeList({carMakesStore}) {
+
+function CarMakeList({carMakesStore}) {  
     return (
     <div>
         <p className="storesDetails">{carMakesStore.storeDetails}</p>

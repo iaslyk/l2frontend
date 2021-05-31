@@ -3,14 +3,18 @@ import {
     computed,
     makeObservable,
     observable,
+    runInAction
 } from 'mobx';
 import React from 'react';
 import CarsMakeService from '../../common/carsMakeService'
 
-class CarMakesStore {
+class CarMakesStore extends React.Component{
     constructor(){
-        this.carsMakeService = new CarsMakeService();
+        super();
+        this.carsModelService = new CarsMakeService();
+
         makeObservable(this, {
+            carsMake: observable,
             lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
@@ -20,8 +24,9 @@ class CarMakesStore {
             deleteCarMake: action,
             editCarMake: action,
                 })
-    }
-
+        }
+    
+    carsMake= [{id: "", carMake: "", carModelName: "", carModelFuel: "", carModelInfo: ""}]
     lastId = this.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
@@ -31,7 +36,6 @@ class CarMakesStore {
         return this.carsMake.length;
     }
 
-
     // Create car make
     createCarMake = () => {
         this.carsMake.push({
@@ -40,8 +44,7 @@ class CarMakesStore {
             carMakeAbrv: this.newCarMakeAbrv.current.value}
         );
     }
-
-
+    
     // Delete car make
     deleteCarMake(carMakeId) {
         const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
@@ -49,7 +52,6 @@ class CarMakesStore {
             this.carsMake.splice(carMakeIndexAtId, 1);
         }
     }
-
         
     // Get numbers of car makes, and car models we have
     get storeDetails() {
@@ -64,11 +66,6 @@ class CarMakesStore {
     logStoreDetails = () => {
         console.log(this.storeDetails);
     }
-
-
 };
 
 export default new CarMakesStore();
-
-
-
