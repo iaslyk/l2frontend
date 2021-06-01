@@ -6,15 +6,9 @@ import {
     runInAction
 } from 'mobx';
 import React from 'react';
-import CarsMakeService from '../../common/carsMakeService'
-
-class CarMakesStore extends React.Component{
+class CarMakesStore{
     constructor(){
-        super();
-        this.carsMakeService = new CarsMakeService();
-
         makeObservable(this, {
-
             carsMake: observable,
             lastId: observable,
             newCarMakeName: observable,

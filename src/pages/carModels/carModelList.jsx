@@ -3,31 +3,29 @@ import { inject, observer } from 'mobx-react';
 import {Link} from 'react-router-dom';
 import Pagination from './pagination'
 
-
-
-function CarModelList({carModelsStore}) {
-
+class CarModelList extends React.Component {
+    render() {
     return (
         <div>
-            <p className="storeDetails">{carModelsStore.storeDetails}</p>
+            <p className="storeDetails">{this.props.carModelsStore.storeDetails}</p>
             <input placeholder="Start typing model..."
-                 onKeyUp={carModelsStore.onChangeFilterModels} />
+                 onKeyUp={this.props.carModelsStore.onChangeFilterModels} />
             <table>
                 <thead className="tableModelHead">
                     <tr>
                         <th>Car Model Name <br />
-                            <button onClick={() => carModelsStore.sortedModelNames()} className="buttonSort">&uarr;</button>
-                            <button onClick={() => carModelsStore.reverseSortedModelNames()} className="buttonSort">&darr;</button>                     
+                            <button onClick={() => this.props.carModelsStore.sortedModelNames()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => this.props.carModelsStore.reverseSortedModelNames()} className="buttonSort">&darr;</button>                     
                         </th>
                         <th>Fuel Type <br />
-                            <button onClick={() => carModelsStore.sortedModelFuel()} className="buttonSort">&uarr;</button>
-                            <button onClick={() => carModelsStore.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
+                            <button onClick={() => this.props.carModelsStore.sortedModelFuel()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => this.props.carModelsStore.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
                         <th>Car Make</th>
                         <th>Car Model Info</th>
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {carModelsStore.filteredModels.map((carModel) => {
+                    {this.props.carModelsStore.filteredModels.map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
@@ -40,7 +38,7 @@ function CarModelList({carModelsStore}) {
                                 <Link exact to={`/carmodels/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
                                 </td>
                                 <td>
-                                <button onClick={() => carModelsStore.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>
+                                <button onClick={() => this.props.carModelsStore.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>
                                 </td>
 
                             </tr>
@@ -49,9 +47,9 @@ function CarModelList({carModelsStore}) {
 
                 </tbody>
                 <Pagination
-                    modelsPerPage={carModelsStore.modelsPerPage}
-                    totalCarsModel={carModelsStore.totalCarsModel}
-                    paginate={carModelsStore.setPage}
+                    modelsPerPage={this.props.carModelsStore.modelsPerPage}
+                    totalCarsModel={this.props.carModelsStore.totalCarsModel}
+                    paginate={this.props.carModelsStore.setPage}
                 />
 
 
@@ -69,7 +67,7 @@ function CarModelList({carModelsStore}) {
 
         </div>
     );
-
+}
 };
 
 export default inject('carModelsStore') (observer(CarModelList));

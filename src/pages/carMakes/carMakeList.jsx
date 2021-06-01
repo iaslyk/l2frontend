@@ -2,12 +2,11 @@ import React from 'react';
 import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
-
-
-function CarMakeList({carMakesStore}) {  
+class CarMakeList extends React.Component {  
+    render() {
     return (
     <div>
-        <p className="storesDetails">{carMakesStore.storeDetails}</p>
+        <p className="storesDetails">{this.props.carMakesStore.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -18,7 +17,7 @@ function CarMakeList({carMakesStore}) {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {carMakesStore.carsMake.map((carMake) => {
+                {this.props.carMakesStore.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             
@@ -29,7 +28,7 @@ function CarMakeList({carMakesStore}) {
                                 
                             </td>
                             <td>
-                            <button onClick={() => carMakesStore.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
+                            <button onClick={() => this.props.carMakesStore.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
                             </td>
                         </tr>
                     )
@@ -48,7 +47,7 @@ function CarMakeList({carMakesStore}) {
         </table>  
         
     </div>
-    )
+    )}
 
 }
 

@@ -39,22 +39,7 @@ class CarModelsStore {
 
     carsModel= [{id: "", carMake: "", carModelName: "", carModelFuel: "", carModelInfo: ""},
 ]
-
-    getCarsMake = async()  => {
-        try {
-            const data = await this.carsModelService.get();
-            runInAction(() => {
-                this.carsModelData = data
-            })
-        } catch(error) {
-            runInAction(() => {
-                console.log("Error!")
-            })
-        }
-    }
-
-
-   lastId = this.carsModel.slice(-1)[0].id;
+    lastId = this.carsModel.slice(-1)[0].id;
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
