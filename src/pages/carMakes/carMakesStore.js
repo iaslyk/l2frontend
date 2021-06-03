@@ -6,10 +6,14 @@ import {
     runInAction
 } from 'mobx';
 import React from 'react';
+import CarsMakeService from '../../common/carsMakeService'
+
 class CarMakesStore{
     constructor(){
+        this.carsMakeService = new CarsMakeService();
         makeObservable(this, {
-            carsMake: observable,
+            carsMakeData: observable,
+            status: observable,
             lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
@@ -21,19 +25,83 @@ class CarMakesStore{
                 })
         }
 
-    carsMake= [{id: "", carMake: "", carModelName: "", carModelFuel: "", carModelInfo: ""}]
-    lastId = this.carsMake.slice(-1)[0].id;
+    carsMakeData = {    
+        carsMake: [{}]
+    }
+    status = "Loading..."
+
+
+    getCarsMakeAsync = async() => {
+        try {
+            const data = await this.carsMakeService.get();
+            runInAction(() => {
+                this.carsMakeData.carsMake = data;
+            })
+        } catch(error) {
+            runInAction(() => {
+                this.status = "error";
+            })
+        }
+    }
+    
+    createCarMakeAsync = async (make) => {
+        try {
+            const response = await this.carsMakeService.post(make);
+            if (response.status === 201) {
+                runInAction(() => {
+                    this.status = "Success";
+                })
+            }
+        } catch (error) {
+            runInAction(() => {
+                this.status = "error";
+            })
+        }
+    }
+
+    updateCarsMakeAsync = async(make) => {
+        try {
+            const response = await this.carsMakeService.put(make);
+            if (response.status === 200) {
+                runInAction(() => {
+                    this.status = "Success";
+                })
+            }
+        } catch (error) {
+            runInAction(() => {
+                this.status = "error";
+            })
+        }
+    }
+
+    deleteCarMakeAsync = async(id) => {
+        try {
+            const response = await this.carsMakeService.delete(id);
+            if (response.status === 204) {
+                runInAction(() => {
+                    this.status = "Success";
+                })
+            }
+        } catch (error) {
+            runInAction(() => {
+                this.status = "error"
+            })
+        }
+    }
+
+
+    lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
-        return this.carsMake.length;
+        return this.carsMakeData.carsMake.length;
     }
 
     // Create car make
     createCarMake = () => {
-        this.carsMake.push({
+        this.carsMakeData.carsMake.push({
             id: ++this.lastId,
             carMakeName: this.newCarMakeName.current.value, 
             carMakeAbrv: this.newCarMakeAbrv.current.value}
@@ -42,9 +110,9 @@ class CarMakesStore{
     
     // Delete car make
     deleteCarMake(carMakeId) {
-        const carMakeIndexAtId = this.carsMake.findIndex((carMake) => carMake.id === carMakeId);
+        const carMakeIndexAtId = this.carsMakeData.carsMake.findIndex((carMake) => carMake.id === carMakeId);
         if (carMakeIndexAtId > -1) {
-            this.carsMake.splice(carMakeIndexAtId, 1);
+            this.carsMakeData.carsMake.splice(carMakeIndexAtId, 1);
         }
     }
         
@@ -54,8 +122,8 @@ class CarMakesStore{
     }
 
     editCarMake(carMakeName, carMakeAbrv){
-        this.carsMake.carMakeName = carMakeName;
-        this.carsMake.carMakeAbrv = carMakeAbrv;
+        this.carsMakeData.carsMake.carMakeName = carMakeName;
+        this.carsMakeData.carsMake.carMakeAbrv = carMakeAbrv;
     }
 
     logStoreDetails = () => {

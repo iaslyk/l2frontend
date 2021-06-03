@@ -8,19 +8,19 @@ const EditCarMake = ({ carMakesStore }) => {
       return (
         <div className="App">
                 
-                <h2>Edit {carMakesStore.carsMake[makeId].carMakeName}</h2>
+                <h2>Edit {carMakesStore.carsMakeData.carsMake[makeId].carMakeName}</h2>
                 <p className="storeDetails">{carMakesStore.storeDetails}</p>
                     <form className="addCarMake" >
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={carMakesStore.carsMake[makeId].carMakeName}
-                                      onChange={e => (carMakesStore.carsMake[makeId].carMakeName = e.target.value)}
+                                      defaultValue={carMakesStore.carsMakeData.carsMake[makeId].carMakeName}
+                                      onChange={e => (carMakesStore.carsMakeData.carsMake[makeId].carMakeName = e.target.value)}
                                     
                               />
                               <input className="addInput" 
                                       type="text"
-                                      defaultValue={carMakesStore.carsMake[makeId].carMakeAbrv}
-                                      onChange={e => (carMakesStore.carsMake[makeId].carMakeAbrv = e.target.value)}
+                                      defaultValue={carMakesStore.carsMakeData.carsMake[makeId].carMakeAbrv}
+                                      onChange={e => (carMakesStore.carsMakeData.carsMake[makeId].carMakeAbrv = e.target.value)}
                             
                               />
                       <button className="buttonUpdate" onClick={() => carMakesStore.editCarMake(carMakesStore.carMakeName)}><Link to="/">Save Car Make Edit</Link></button>

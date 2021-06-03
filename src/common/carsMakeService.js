@@ -1,12 +1,16 @@
 // services for carsMake
-const urlcarsMake  = "http://localhost:3001/carsMake"
+const urlcarsMake  = "http://localhost:3001/carsMake/"
 
 class CarsMakeService {
     
     get = async () => {
-        const response = await fetch(urlcarsMake)
-        const carsMake = await response.json();
-        return carsMake; 
+        const options = {
+            method: "GET",
+        }
+        const request = new Request(urlcarsMake, options)
+        const response = await fetch(request)
+        const data = response.json();
+        return data;
     }
 
     post = async (make) => {

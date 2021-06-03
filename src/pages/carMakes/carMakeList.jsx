@@ -3,6 +3,10 @@ import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 class CarMakeList extends React.Component {  
+    componentDidMount() {
+        this.props.carMakesStore.getCarsMakeAsync();
+    }
+    
     render() {
     return (
     <div>
@@ -17,7 +21,7 @@ class CarMakeList extends React.Component {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {this.props.carMakesStore.carsMake.map((carMake) => {
+                {this.props.carMakesStore.carsMakeData.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             

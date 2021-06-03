@@ -12,7 +12,8 @@ class CarModelsStore {
     constructor(){
         this.carsModelService = new CarsModelService();
         makeObservable(this, {
-            carsModel: observable,
+            carsModelData: observable,
+            status: observable,
             lastId: observable,
             newCarModelName: observable,
             newCarModelFuel: observable,
@@ -37,9 +38,12 @@ class CarModelsStore {
         });
     }
 
-    carsModel= [{id: "", carMake: "", carModelName: "", carModelFuel: "", carModelInfo: ""},
-]
-    lastId = this.carsModel.slice(-1)[0].id;
+    carsModelData= {
+        carsModel: [{}]
+    }
+    status = "Loading..."
+
+    lastId = this.carsModelData.carsModel.slice(-1)[0].id;
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
@@ -48,12 +52,12 @@ class CarModelsStore {
 
     // Get total number of car models
     get totalCarsModel() {
-        return this.carsModel.length;
+        return this.carsModelData.carsModel.length;
     }
     
     // Create car model
     createCarModel = () => {
-        this.carsModel.push({
+        this.carsModelData.carsModel.push({
             id: ++this.lastId,
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
@@ -63,17 +67,17 @@ class CarModelsStore {
     }
     
     editCarModel = (carModelName, carModelFuel, carModelInfo, carMakeModel) => {
-        this.carsModel.carModelName = carModelName;
-        this.carsModel.carModelFuel = carModelFuel;
-        this.carsModel.carModelInfo = carModelInfo;
-        this.carsModel.carMake = carMakeModel;
+        this.carsModelData.carsModel.carModelName = carModelName;
+        this.carsModelData.carsModel.carModelFuel = carModelFuel;
+        this.carsModelData.carsModel.carModelInfo = carModelInfo;
+        this.carsModelData.carsModel.carMake = carMakeModel;
     };
 
     // Delete car model
     deleteCarModel(carModelId) {
-        const carModelIndexAtId = this.carsModel.findIndex((carModel) => carModel.id === carModelId);
+        const carModelIndexAtId = this.carsModelData.carsModel.findIndex((carModel) => carModel.id === carModelId);
         if (carModelIndexAtId > -1) {
-            this.carsModel.splice(carModelIndexAtId, 1)
+            this.carsModelData.carsModel.splice(carModelIndexAtId, 1)
         }
     }
     
@@ -116,7 +120,7 @@ class CarModelsStore {
     }
 
     get filteredModels () {
-		this.filteredList = this.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
+		this.filteredList = this.carsModelData.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
         this.filteredListSliced = this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
         return this.filteredListSliced
     }

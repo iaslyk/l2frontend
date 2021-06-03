@@ -9,28 +9,28 @@ const EditCarModel = ({ stores }) => {
       return (
         <div className="App">
                 
-                <h2>Edit {stores.carModelsStore.carsModel[modelId].carModelName} </h2>
+                <h2>Edit {stores.carModelsStore.carsModelData.carsModel[modelId].carModelName} </h2>
                 <p className="storeDetails">{stores.carModelsStore.storeDetails}</p>
                     <form className="addCarMake" >
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={stores.carModelsStore.carsModel[modelId].carModelName}
-                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelName = e.target.value)}                                      
+                                      defaultValue={stores.carModelsStore.carsModelData.carsModel[modelId].carModelName}
+                                      onChange={e => (stores.carModelsStore.carsModelData.carsModel[modelId].carModelName = e.target.value)}                                      
                               />
                               <input className="addInput"
                                       type="text"
-                                      defaultValue={stores.carModelsStore.carsModel[modelId].carModelFuel}
-                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelFuel = e.target.value)}                                                                            
+                                      defaultValue={stores.carModelsStore.carsModelData.carsModel[modelId].carModelFuel}
+                                      onChange={e => (stores.carModelsStore.carsModelData.carsModel[modelId].carModelFuel = e.target.value)}                                                                            
                               />
                               <input className="addInput"
                                       type="text"
-                                      defaultValue={stores.carModelsStore.carsModel[modelId].carModelInfo}
-                                      onChange={e => (stores.carModelsStore.carsModel[modelId].carModelInfo = e.target.value)}                                      
+                                      defaultValue={stores.carModelsStore.carsModelData.carsModel[modelId].carModelInfo}
+                                      onChange={e => (stores.carModelsStore.carsModelData.carsModel[modelId].carModelInfo = e.target.value)}                                      
                                       
                               />
                               <h3>Choose a Car Make:</h3>
-                      <select className="dropdown" onChange={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
-                      {stores.carMakesStore.carsMake.map((carMake) => {
+                      <select className="dropdown" onChange={stores.carMakesStore.carsMakeData.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
+                      {stores.carMakesStore.carsMakeData.carsMake.map((carMake) => {
                         return (
                           <option key={carMake.id}>{carMake.carMakeAbrv}</option>
                         )

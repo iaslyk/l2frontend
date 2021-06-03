@@ -26,8 +26,8 @@ const AddCarModel = ({stores}) => {
                           ref={stores.carModelsStore.newCarModelInfo}
                     />
                     <h3>Choose a Car Make:</h3>
-                    <select className="dropdown" onChange={stores.carMakesStore.carsMake.id} ref={stores.carModelsStore.carMakeModel}>
-                      {stores.carMakesStore.carsMake.map((carMake) => {
+                    <select className="dropdown" onChange={stores.carMakesStore.carsMakeData.carsMake.id} ref={stores.carModelsStore.carsModelData.carMakeModel}>
+                      {stores.carMakesStore.carsMakeData.carsMake.map((carMake) => {
                         return (
                           <option  key={carMake.id}>
                             {carMake.carMakeAbrv}

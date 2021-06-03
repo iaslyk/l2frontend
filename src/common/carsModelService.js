@@ -1,16 +1,16 @@
 // services for carsModel
 const urlCarsModel = "http://localhost:3001/carsModel"
 
-
 class CarsModelService {
     
-    get = async (urlCarsModelParams) => {
+    get = async () => {
         const options = {
             method: "GET",
         }
-     const request = new Request(urlCarsModel + urlCarsModelParams, options);
-     const response = await fetch(request);
-     return response.json();
+        const request = new Request(urlCarsModel, options);
+        const response = await fetch(request);
+        const data = response.json();
+        return data;
     }
 
     post = async (model) => {
