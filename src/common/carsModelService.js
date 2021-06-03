@@ -1,5 +1,5 @@
 // services for carsModel
-const urlCarsModel = "http://localhost:3001/carsModel"
+const urlCarsModel = "http://localhost:3001/carsModel/"
 
 class CarsModelService {
     
