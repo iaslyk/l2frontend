@@ -115,7 +115,7 @@ class CarModelsStore {
     
     // Create car model
     createCarModel = () => {
-        this.carsModelData.carsModel.push({
+        this.createCarModelAsync({
             id: ++this.lastId,
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
@@ -132,11 +132,12 @@ class CarModelsStore {
     };
 
     // Delete car model
-    deleteCarModel(carModelId) {
-        const carModelIndexAtId = this.carsModelData.carsModel.findIndex((carModel) => carModel.id === carModelId);
-        if (carModelIndexAtId > -1) {
-            this.carsModelData.carsModel.splice(carModelIndexAtId, 1)
-        }
+    deleteCarModel = async(carModelId) => {
+        this.deleteCarModelAsync(carModelId);
+        const data = await this.carsModelService.get();
+        runInAction(() => {
+            this.carsModelData.carsModel = data;
+        })
     }
     
         

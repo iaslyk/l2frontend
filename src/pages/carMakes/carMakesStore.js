@@ -17,6 +17,8 @@ class CarMakesStore{
             lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
+            editCarMakeName: observable,
+            editCarMakeAbrv: observable,
             totalCarsMake: computed,
             storeDetails: computed,
             createCarMake: action,
@@ -93,6 +95,8 @@ class CarMakesStore{
     lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
+    editCarMakeName = React.createRef();
+    editCarMakeAbrv = React.createRef();
 
     // Get total number of car makes
     get totalCarsMake() {
@@ -109,9 +113,12 @@ class CarMakesStore{
     }
     
     // Delete car make
-    deleteCarMake(carMakeId) {
+    deleteCarMake = async(carMakeId) => {
         this.deleteCarMakeAsync(carMakeId);
-        window.location.reload(false);
+        const data = await this.carsMakeService.get();
+        runInAction(() => {
+            this.carsMakeData.carsMake = data;
+        })
     }
         
     // Get numbers of car makes, and car models we have
@@ -119,9 +126,10 @@ class CarMakesStore{
         return `We have ${this.totalCarsMake} car makes.`
     }
 
-    editCarMake(carMakeName, carMakeAbrv){
-        this.carsMakeData.carsMake.carMakeName = carMakeName;
-        this.carsMakeData.carsMake.carMakeAbrv = carMakeAbrv;
+    editCarMake(){
+        this.updateCarsMakeAsync()({
+        carMakeName: this.editCarMakeName.current.value, 
+        carMakeAbrv: this.editCarMakeAbrv.current.value,})
     }
 
     logStoreDetails = () => {

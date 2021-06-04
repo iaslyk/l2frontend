@@ -26,13 +26,13 @@ class CarsModelService {
         return response;
     }
 
-    put = async (model) => {
+    put = async (id) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
             method: "PUT",
             headers,
-            body: JSON.stringify(model)
+            body: JSON.stringify(id)
         }
         const request = new Request(urlCarsModel, options);
         const response = await fetch(request);
@@ -46,7 +46,7 @@ class CarsModelService {
             method: "DELETE",
             headers
         }
-        const request = new Request(urlCarsModel + "/" + id, options);
+        const request = new Request(urlCarsModel + id, options);
         const response = await fetch(request);
         return response;
     }

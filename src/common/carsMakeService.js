@@ -26,15 +26,15 @@ class CarsMakeService {
         return response;
     }
 
-    put = async (make) => {
+    put = async (id) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
             method: "PUT",
             headers,
-            body: JSON.stringify(make)
+            body: JSON.stringify(id)
         }
-        const request = new Request(urlcarsMake, options);
+        const request = new Request(urlcarsMake + id, options);
         const response = await fetch(request);
         return response;
     }
