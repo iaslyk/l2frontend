@@ -1,5 +1,5 @@
 // services for carsMake
-const urlcarsMake  = "http://localhost:3001/carsMake/"
+const urlcarsMake  = "http://localhost:3001/carsMake"
 
 class CarsMakeService {
     
@@ -34,7 +34,7 @@ class CarsMakeService {
             headers,
             body: JSON.stringify(id)
         }
-        const request = new Request(urlcarsMake + id, options);
+        const request = new Request(urlcarsMake + "/" + id, options);
         const response = await fetch(request);
         return response;
     }
@@ -46,7 +46,7 @@ class CarsMakeService {
             method: "DELETE",
             headers
         }
-        const request = new Request(urlcarsMake + id, options);
+        const request = new Request(urlcarsMake + "/" + id, options);
         const response = await fetch(request);
         return response;
     }

@@ -40,7 +40,7 @@ class CarModelList extends React.Component {
                                 
                                
                                 <td >
-                                <Link exact to={`/carmodels/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
+                                <Link exact to={`/carsModel/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
                                 </td>
                                 <td>
                                 <button onClick={() => this.props.carModelsStore.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>

@@ -38,8 +38,8 @@ const AddCarModel = ({stores}) => {
                     </select>
                   </form>
                   <br></br>
-              <button className="buttonUpdate" onClick={() => stores.carModelsStore.createCarModel(stores.carModelsStore.newCarModelName.current.value)}><Link to="/carmodels">Save New Car Model</Link></button>
-              <button className="buttonDelete"><Link to="/carmodels">Close New Model Editor</Link></button>
+              <button className="buttonUpdate" onClick={() => stores.carModelsStore.createCarModel(stores.carModelsStore.newCarModelName.current.value)}><Link to="/carsModel">Save New Car Model</Link></button>
+              <button className="buttonDelete"><Link to="/carsModel">Close New Model Editor</Link></button>
       </div>
     );
 };

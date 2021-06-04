@@ -126,8 +126,8 @@ class CarMakesStore{
         return `We have ${this.totalCarsMake} car makes.`
     }
 
-    editCarMake(){
-        this.updateCarsMakeAsync()({
+    editCarMake = (id) => {
+        this.updateCarsMakeAsync({
         carMakeName: this.editCarMakeName.current.value, 
         carMakeAbrv: this.editCarMakeAbrv.current.value,})
     }

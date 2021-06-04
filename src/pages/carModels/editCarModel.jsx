@@ -36,7 +36,7 @@ const EditCarModel = ({ stores }) => {
                         )
                       })}
                       </select>
-                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.carModelName)}><Link to="/carmodels">Save Car Model Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => stores.carModelsStore.editCarModel(stores.carModelsStore.carModelName)}><Link to="/carsModels">Save Car Model Edit</Link></button>
                     </form>
                     
                       <Link to="/carmodels"><button className="buttonDelete">Close Model Editor</button></Link>

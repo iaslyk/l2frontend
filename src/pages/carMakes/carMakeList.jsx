@@ -29,7 +29,7 @@ class CarMakeList extends React.Component {
                             <td>{carMake.carMakeName}</td>
                             <td>{carMake.carMakeAbrv}</td>
                             <td>
-                                <Link exact to={`/carmakes/${carMake.id}`}><button className="buttonUpdate">Update {carMake.carMakeAbrv}</button></Link>
+                                <Link exact to={`/carsMake/${carMake.id}`}><button className="buttonUpdate">Update {carMake.carMakeAbrv}</button></Link>
                                 
                             </td>
                             <td>

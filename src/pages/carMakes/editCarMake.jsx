@@ -9,21 +9,18 @@ const EditCarMake = ({ carMakesStore }) => {
         <div className="App">
                 
                 <h2>Edit {carMakesStore.carsMakeData.carsMake[makeId].carMakeName}</h2>
-                <p className="storeDetails">{carMakesStore.storeDetails}</p>
-                    <form className="addCarMake" >
+                    <form className="addCarMake" >                      
                       <input className="addInput"
                                       type="text"
                                       defaultValue={carMakesStore.carsMakeData.carsMake[makeId].carMakeName}
                                       ref={carMakesStore.editCarMakeName}
-                                    
                               />
                               <input className="addInput" 
                                       type="text"
                                       defaultValue={carMakesStore.carsMakeData.carsMake[makeId].carMakeAbrv}
-                                      ref={carMakesStore.editCarMakeAbrv}
-                            
+                                      ref={carMakesStore.editCarMakeAbrv}                      
                               />
-                      <button className="buttonUpdate" onClick={() => carMakesStore.editCarMake(carMakesStore.editCarMakeName.current.value)}><Link to="/">Save Car Make Edit</Link></button>
+                      <button className="buttonUpdate" onSubmit={() => carMakesStore.editCarMake(carMakesStore.editCarMakeName.current.value)}>Save Car Make Edit</button>
                     </form>
                     
                       <Link to="/"><button className="buttonDelete">Close Make Editor</button></Link>
