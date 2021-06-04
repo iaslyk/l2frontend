@@ -3,6 +3,7 @@ import {inject, observer} from 'mobx-react';
 import {Link} from 'react-router-dom';
 
 class CarMakeList extends React.Component {  
+    
     componentDidMount() {
         this.props.carMakesStore.getCarsMakeAsync();
     }

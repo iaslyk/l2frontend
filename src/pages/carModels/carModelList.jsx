@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import Pagination from './pagination'
 
 class CarModelList extends React.Component {
+    
     componentDidMount() {
         this.props.carModelsStore.getCarsModelAsync();
     }

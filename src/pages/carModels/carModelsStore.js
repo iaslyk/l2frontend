@@ -120,7 +120,7 @@ class CarModelsStore {
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
-            carMake: this.carMakeModel.current.value
+//            carMake: this.carMakeModel.target.value
         });
     }
     
