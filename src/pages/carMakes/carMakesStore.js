@@ -101,7 +101,7 @@ class CarMakesStore{
 
     // Create car make
     createCarMake = () => {
-        this.carsMakeData.carsMake.push({
+        this.createCarMakeAsync({
             id: ++this.lastId,
             carMakeName: this.newCarMakeName.current.value, 
             carMakeAbrv: this.newCarMakeAbrv.current.value}
