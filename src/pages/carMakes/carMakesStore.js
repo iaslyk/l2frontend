@@ -104,16 +104,14 @@ class CarMakesStore{
         this.createCarMakeAsync({
             id: ++this.lastId,
             carMakeName: this.newCarMakeName.current.value, 
-            carMakeAbrv: this.newCarMakeAbrv.current.value}
+            carMakeAbrv: this.newCarMakeAbrv.current.value,}
         );
     }
     
     // Delete car make
     deleteCarMake(carMakeId) {
-        const carMakeIndexAtId = this.carsMakeData.carsMake.findIndex((carMake) => carMake.id === carMakeId);
-        if (carMakeIndexAtId > -1) {
-            this.carsMakeData.carsMake.splice(carMakeIndexAtId, 1);
-        }
+        this.deleteCarMakeAsync(carMakeId);
+        window.location.reload(false);
     }
         
     // Get numbers of car makes, and car models we have

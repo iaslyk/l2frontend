@@ -46,7 +46,7 @@ class CarsMakeService {
             method: "DELETE",
             headers
         }
-        const request = new Request(urlcarsMake + "/" + id, options);
+        const request = new Request(urlcarsMake + id, options);
         const response = await fetch(request);
         return response;
     }
