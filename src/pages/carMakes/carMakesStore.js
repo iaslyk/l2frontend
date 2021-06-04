@@ -63,7 +63,7 @@ class CarMakesStore{
 
     updateCarsMakeAsync = async(make) => {
         try {
-            const response = await this.carsMakeService.put(make);
+            const response = await this.carsMakeService.patch(make);
             if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";

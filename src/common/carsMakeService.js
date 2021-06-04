@@ -26,11 +26,11 @@ class CarsMakeService {
         return response;
     }
 
-    put = async (id) => {
+    patch = async (id) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
-            method: "PUT",
+            method: "PATCH",
             headers,
             body: JSON.stringify(id)
         }
