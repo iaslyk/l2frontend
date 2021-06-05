@@ -7,7 +7,6 @@ const AddCarMake = ({carMakesStore}) => {
     <div className="App">
             
             <h2 >Add Car Make</h2>
-            <p className="storeDetails">{carMakesStore.storeDetails}</p>
                 <form className="addCarMake" >
                   <input className="addInput"
 				              	type="text"

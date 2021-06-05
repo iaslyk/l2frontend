@@ -1,6 +1,5 @@
 import {
     action,
-    computed,
     makeObservable,
     observable,
     runInAction
@@ -14,13 +13,10 @@ class CarMakesStore{
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
-            lastId: observable,
             newCarMakeName: observable,
             newCarMakeAbrv: observable,
             editCarMakeName: observable,
             editCarMakeAbrv: observable,
-            totalCarsMake: computed,
-            storeDetails: computed,
             createCarMake: action,
             deleteCarMake: action,
             editCarMake: action,
@@ -28,7 +24,7 @@ class CarMakesStore{
         }
 
     carsMakeData = {    
-        carsMake: [{}]
+        carsMake: []
     }
     status = "Loading..."
 
@@ -92,21 +88,21 @@ class CarMakesStore{
     }
 
 
-    lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
+    // lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
     editCarMakeName = React.createRef();
     editCarMakeAbrv = React.createRef();
 
     // Get total number of car makes
-    get totalCarsMake() {
-        return this.carsMakeData.carsMake.length;
-    }
+//    get totalCarsMake() {
+//        return this.carsMakeData.carsMake.length;
+//    }
 
     // Create car make
     createCarMake = () => {
         this.createCarMakeAsync({
-            id: ++this.lastId,
+            id: Math.random(),
             carMakeName: this.newCarMakeName.current.value, 
             carMakeAbrv: this.newCarMakeAbrv.current.value,}
         );
@@ -120,11 +116,6 @@ class CarMakesStore{
             this.carsMakeData.carsMake = data;
         })
     }
-        
-    // Get numbers of car makes, and car models we have
-    get storeDetails() {
-        return `We have ${this.totalCarsMake} car makes.`
-    }
 
     editCarMake = (id) => {
         this.updateCarsMakeAsync({
@@ -132,9 +123,6 @@ class CarMakesStore{
         carMakeAbrv: this.editCarMakeAbrv.current.value,})
     }
 
-    logStoreDetails = () => {
-        console.log(this.storeDetails);
-    }
 };
 
 export default new CarMakesStore();

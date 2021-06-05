@@ -14,18 +14,20 @@ class CarModelsStore {
         makeObservable(this, {
             carsModelData: observable,
             status: observable,
-            lastId: observable,
             newCarModelName: observable,
             newCarModelFuel: observable,
             newCarModelInfo: observable,
-            totalCarsModel: computed,
+            editCarModelName: observable,
+            editCarModelFuel: observable,
+            editCarModelInfo: observable,
+            carMakeModel: observable,
+            editCarMakeModel: observable,
             createCarModel: action,
             deleteCarModel: action,
             sortedModelNames: action,
             sortedModelFuel: action,
             reverseSortedModelNames: action,
             reverseSortedModelFuel: action,
-            carMakeModel: observable,
             currentPage: observable,
             modelsPerPage: observable,
             indexOfFirstModel: observable,
@@ -39,7 +41,7 @@ class CarModelsStore {
     }
 
     carsModelData = {
-        carsModel: [{}]
+        carsModel: []
     }
     status = "Loading..."
 
@@ -101,22 +103,19 @@ class CarModelsStore {
         }
     }
 
-    lastId = this.carsModelData.carsModel.slice(-1)[0].id;
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
     newCarModelInfo = React.createRef();
     carMakeModel = React.createRef();
-
-
-    // Get total number of car models
-    get totalCarsModel() {
-        return this.carsModelData.carsModel.length;
-    }
+    editCarModelName = React.createRef();
+    editCarModelFuel = React.createRef();
+    editCarModelInfo = React.createRef();
+    editCarMakeModel = React.createRef();
     
     // Create car model
     createCarModel = () => {
         this.createCarModelAsync({
-            id: ++this.lastId,
+            id: Math.random(),
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
@@ -124,11 +123,13 @@ class CarModelsStore {
         });
     }
     
-    editCarModel = (carModelName, carModelFuel, carModelInfo, carMakeModel) => {
-        this.carsModelData.carsModel.carModelName = carModelName;
-        this.carsModelData.carsModel.carModelFuel = carModelFuel;
-        this.carsModelData.carsModel.carModelInfo = carModelInfo;
-        this.carsModelData.carsModel.carMake = carMakeModel;
+    editCarModel = (id) => {
+        this.updateCarsModelAsync({
+            carModelName: this.editCarModelName.current.value,
+            carModelFuel: this.editCarModelFuel.current.value,
+            carModelInfo: this.editCarModelInfo.current.value,
+//            carMake: this.editCarMakeModel.target.value
+        })
     };
 
     // Delete car model
@@ -138,16 +139,6 @@ class CarModelsStore {
         runInAction(() => {
             this.carsModelData.carsModel = data;
         })
-    }
-    
-        
-    // Get numbers of car makes, and car models we have
-    get storeDetails() {
-        return `We have ${this.totalCarsModel} car models`
-    }
-
-    logStoreDetails(){
-        console.log(this.storeDetails);
     }
 
     sortedModelNames(){
