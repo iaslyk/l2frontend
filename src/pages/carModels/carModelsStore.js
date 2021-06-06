@@ -8,9 +8,14 @@ import {
 import React from 'react';
 import CarsModelService from '../../common/carsModelService'
 
-class CarModelsStore {
-    constructor(){
+class CarModelsStore extends React.Component {
+    constructor(props){
+        super(props);
         this.carsModelService = new CarsModelService();
+        this.carsModelData = {
+            carsModel: []
+        }
+        this.status = "Loading..."
         makeObservable(this, {
             carsModelData: observable,
             status: observable,
@@ -37,13 +42,14 @@ class CarModelsStore {
             filteredModels: computed,
             onChangeFilterModels: action,
             editCarModel: action,
+            totalCarsModel: computed,
+            Id: computed,
+
         });
     }
 
-    carsModelData = {
-        carsModel: []
-    }
-    status = "Loading..."
+    
+
 
     getCarsModelAsync = async() => {
         try {
@@ -88,9 +94,9 @@ class CarModelsStore {
         }
     }
 
-    deleteCarModelAsync = async(id) => {
+    deleteCarModelAsync = (id) => {
         try {
-            const response = await this.carsModelService.delete(id);
+            const response = this.carsModelService.delete(id);
             if (response.status === 204) {
                 runInAction(() => {
                     this.status = "Success";
@@ -101,6 +107,13 @@ class CarModelsStore {
                 this.status = "error"
             })
         }
+    }
+
+    
+    get Id(){
+        const lastId = this.carsModelData.carsModel.slice(-1)[0].id;
+        const currentId = ++this.lastId;
+        return currentId
     }
 
     newCarModelName = React.createRef();
@@ -115,7 +128,7 @@ class CarModelsStore {
     // Create car model
     createCarModel = () => {
         this.createCarModelAsync({
-            id: Math.random(),
+            id: this.Id,
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
@@ -170,8 +183,8 @@ class CarModelsStore {
     }
 
     get filteredModels () {
-		this.filteredList = this.carsModelData.carsModel.map(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
-        this.filteredListSliced = this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
+        this.getCarsModelAsync();
+       	this.filteredList = this.carsModelData.carsModel.map(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
         return this.filteredListSliced
     }
 
@@ -181,6 +194,13 @@ class CarModelsStore {
         this.filteredModelsValue = e.target.value.toLowerCase();
     }
 
+    get totalCarsModel() {
+        return this.carsModelData.carsModel.length;
+    }
+
+        get storeDetails() {
+        return `We have ${this.totalCarsModel} car models`
+    }
 };
 
 export default new CarModelsStore();

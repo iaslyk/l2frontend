@@ -11,6 +11,7 @@ class CarMakeList extends React.Component {
     render() {
     return (
     <div>
+        <p className="storesDetails">{this.props.carMakesStore.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>

@@ -1,5 +1,6 @@
 import {
     action,
+    computed,
     makeObservable,
     observable,
     runInAction
@@ -7,9 +8,14 @@ import {
 import React from 'react';
 import CarsMakeService from '../../common/carsMakeService'
 
-class CarMakesStore{
-    constructor(){
+class CarMakesStore extends React.Component{
+    constructor(props){
+        super(props);
         this.carsMakeService = new CarsMakeService();
+        this.carsMakeData = {    
+            carsMake: []
+        };
+        this.status = "Loading...";
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
@@ -20,13 +26,13 @@ class CarMakesStore{
             createCarMake: action,
             deleteCarMake: action,
             editCarMake: action,
+            storeDetails: computed,
+            totalCarsMake: computed,
+            Id: computed
                 })
         }
 
-    carsMakeData = {    
-        carsMake: []
-    }
-    status = "Loading..."
+
 
 
     getCarsMakeAsync = async() => {
@@ -72,9 +78,9 @@ class CarMakesStore{
         }
     }
 
-    deleteCarMakeAsync = async(id) => {
+    deleteCarMakeAsync = (id) => {
         try {
-            const response = await this.carsMakeService.delete(id);
+            const response = this.carsMakeService.delete(id);
             if (response.status === 204) {
                 runInAction(() => {
                     this.status = "Success";
@@ -87,22 +93,25 @@ class CarMakesStore{
         }
     }
 
-
-    // lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
     newCarMakeName = React.createRef();
     newCarMakeAbrv = React.createRef();
     editCarMakeName = React.createRef();
     editCarMakeAbrv = React.createRef();
 
     // Get total number of car makes
-//    get totalCarsMake() {
-//        return this.carsMakeData.carsMake.length;
-//    }
+    get totalCarsMake() {
+        return this.carsMakeData.carsMake.length;
+    }
 
+    get Id(){
+        const lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
+        const currentId = ++this.lastId;
+        return currentId
+    }
     // Create car make
     createCarMake = () => {
         this.createCarMakeAsync({
-            id: Math.random(),
+            id: this.Id,
             carMakeName: this.newCarMakeName.current.value, 
             carMakeAbrv: this.newCarMakeAbrv.current.value,}
         );
@@ -121,6 +130,10 @@ class CarMakesStore{
         this.updateCarsMakeAsync({
         carMakeName: this.editCarMakeName.current.value, 
         carMakeAbrv: this.editCarMakeAbrv.current.value,})
+    }
+
+    get storeDetails() {
+        return `We have ${this.totalCarsMake} car makes.`
     }
 
 };
