@@ -8,7 +8,7 @@ class CarModelList extends React.Component {
     componentDidMount() {
         this.props.carModelsStore.getCarsModelAsync();
     }
-    
+  
     render() {
     return (
         <div>
@@ -30,7 +30,7 @@ class CarModelList extends React.Component {
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {this.props.carModelsStore.carsModelData.carsModel.map((carModel) => {
+                    {this.props.carModelsStore.filteredModels.map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>

@@ -120,10 +120,7 @@ class CarMakesStore extends React.Component{
     // Delete car make
     deleteCarMake = async(carMakeId) => {
         this.deleteCarMakeAsync(carMakeId);
-        const data = await this.carsMakeService.get();
-        runInAction(() => {
-            this.carsMakeData.carsMake = data;
-        })
+        this.getCarsMakeAsync()
     }
 
     editCarMake = (id) => {

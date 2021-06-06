@@ -44,7 +44,6 @@ class CarModelsStore extends React.Component {
             editCarModel: action,
             totalCarsModel: computed,
             Id: computed,
-
         });
     }
 
@@ -141,17 +140,14 @@ class CarModelsStore extends React.Component {
             carModelName: this.editCarModelName.current.value,
             carModelFuel: this.editCarModelFuel.current.value,
             carModelInfo: this.editCarModelInfo.current.value,
-//            carMake: this.editCarMakeModel.target.value
+            carMake: this.editCarMakeModel.target.value
         })
     };
 
     // Delete car model
     deleteCarModel = async(carModelId) => {
         this.deleteCarModelAsync(carModelId);
-        const data = await this.carsModelService.get();
-        runInAction(() => {
-            this.carsModelData.carsModel = data;
-        })
+        this.getCarsModelAsync();
     }
 
     sortedModelNames(){
@@ -183,8 +179,8 @@ class CarModelsStore extends React.Component {
     }
 
     get filteredModels () {
-        this.getCarsModelAsync();
-       	this.filteredList = this.carsModelData.carsModel.map(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
+		this.filteredList = this.carsModelData.carsModel.filter(t=> t.carModelName.toLowerCase().indexOf(this.filteredModelsValue) > -1);
+        this.filteredListSliced = this.filteredList.slice(this.indexOfFirstModel, this.indexOfLastModel)
         return this.filteredListSliced
     }
 

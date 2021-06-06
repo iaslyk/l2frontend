@@ -7,6 +7,7 @@ class CarMakeList extends React.Component {
     componentDidMount() {
         this.props.carMakesStore.getCarsMakeAsync();
     }
+
     
     render() {
     return (
