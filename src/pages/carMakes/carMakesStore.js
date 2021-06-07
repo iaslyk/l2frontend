@@ -65,7 +65,7 @@ class CarMakesStore extends React.Component{
 
     updateCarsMakeAsync = async(make) => {
         try {
-            const response = await this.carsMakeService.patch(make);
+            const response = await this.carsMakeService.put(make);
             if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";
@@ -104,8 +104,7 @@ class CarMakesStore extends React.Component{
     }
 
     get Id(){
-        const lastId = this.carsMakeData.carsMake.slice(-1)[0].id;
-        const currentId = ++this.lastId;
+        const currentId = ++this.carsMakeData.carsMake.slice(-1)[0].id;
         return currentId
     }
     // Create car make

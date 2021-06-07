@@ -18,10 +18,10 @@ class App extends Component {
       <HeaderPage />
         <Switch>
           <Route exact path="/" component={CarMakesPage}/>
-          <Route path="/carsMake/:makeId" component={EditCarMake}/>
+          <Route path="/carsMake/:id" component={EditCarMake}/>
           <Route exact path="/addcarmake" component={AddCarMake} />
           <Route exact path="/carsModel" component={CarModelsPage} />
-          <Route path="/carsModel/:modelId" component={EditCarModel}/>
+          <Route path="/carsModel/:id" component={EditCarModel}/>
           <Route exact path="/addcarmodel" component={AddCarModel} />
         </Switch>
       <FooterPage />

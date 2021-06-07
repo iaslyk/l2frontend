@@ -110,8 +110,7 @@ class CarModelsStore extends React.Component {
 
     
     get Id(){
-        const lastId = this.carsModelData.carsModel.slice(-1)[0].id;
-        const currentId = ++this.lastId;
+        const currentId = ++this.carsModelData.carsModel.slice(-1)[0].id;;
         return currentId
     }
 
@@ -131,7 +130,7 @@ class CarModelsStore extends React.Component {
             carModelName: this.newCarModelName.current.value,
             carModelFuel: this.newCarModelFuel.current.value,
             carModelInfo: this.newCarModelInfo.current.value,
-//            carMake: this.carMakeModel.target.value
+            carMake: this.carMakeModel.current.value
         });
     }
     
