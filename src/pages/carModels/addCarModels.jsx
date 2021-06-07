@@ -26,7 +26,7 @@ class AddCarModel extends React.Component {
                           ref={this.props.stores.carModelsStore.newCarModelInfo}
                     />
                     <h3>Choose a Car Make:</h3>
-                    <select className="dropdown" onChange={this.props.stores.carMakesStore.carsMakeData.carsMake.id} ref={this.props.stores.carModelsStore.carsModelData.carMakeModel}>
+                    <select className="dropdown" onChange={this.props.stores.carMakesStore.carsMakeData.carsMake.id} ref={this.props.stores.carModelsStore.carMakeModel}>
                       {this.props.stores.carMakesStore.carsMakeData.carsMake.map((carMake) => {
                         return (
                           <option  key={carMake.id}>
