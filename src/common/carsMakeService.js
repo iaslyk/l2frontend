@@ -1,5 +1,5 @@
 // services for carsMake
-const urlcarsMake  = "http://localhost:3001/carsMake"
+const urlcarsMake  = 'http://localhost:3001/carsMake'
 
 class CarsMakeService {
     
@@ -26,15 +26,15 @@ class CarsMakeService {
         return response;
     }
 
-    put = async (id) => {
+    put = async (make) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
             method: "PUT",
             headers,
-            body: JSON.stringify(id)
+            body: JSON.stringify(make)
         }
-        const request = new Request(urlcarsMake + "/" + id, options);
+        const request = new Request(urlcarsMake + '/' + make, options);
         const response = await fetch(request);
         return response;
     }

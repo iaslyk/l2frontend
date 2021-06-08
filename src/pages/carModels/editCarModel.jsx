@@ -36,7 +36,7 @@ class EditCarModel extends React.Component{
                       })}
                       </select>
                       <br />
-                      <button className="buttonUpdate" onClick={() => this.props.stores.carModelsStore.editCarModel(this.props.stores.carModelsStore.editCarModelName)}><Link to="/carsModels">Save Car Model Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => this.props.stores.carModelsStore.editCarModel(this.props.match.params.id)}><Link to="/carsModels">Save Car Model Edit</Link></button>
                     </form>
                     
                       <Link to="/carmodels"><button className="buttonDelete">Close Model Editor</button></Link>

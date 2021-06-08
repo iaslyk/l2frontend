@@ -12,10 +12,6 @@ class CarMakesStore extends React.Component{
     constructor(props){
         super(props);
         this.carsMakeService = new CarsMakeService();
-        this.carsMakeData = {    
-            carsMake: []
-        };
-        this.status = "Loading...";
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
@@ -31,9 +27,11 @@ class CarMakesStore extends React.Component{
             Id: computed
                 })
         }
-
-
-
+   
+    carsMakeData = {    
+        carsMake: []
+    };
+    status = "Loading...";
 
     getCarsMakeAsync = async() => {
         try {
@@ -117,16 +115,15 @@ class CarMakesStore extends React.Component{
     }
     
     // Delete car make
-    deleteCarMake = async(carMakeId) => {
-        this.deleteCarMakeAsync(carMakeId);
+    deleteCarMake = (carMakeId) => {
+        this.deleteCarMakeAsync(carMakeId)
         this.getCarsMakeAsync()
     }
 
-    editCarMake(){
-        this.updateCarsMakeAsync({
-        carMakeName: this.editCarMakeName.current.value, 
-        carMakeAbrv: this.editCarMakeAbrv.current.value,})
+    editCarMake = (id) => {
+        this.updateCarsMakeAsync(id);
     }
+
 
     get storeDetails() {
         return `We have ${this.totalCarsMake} car makes.`

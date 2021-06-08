@@ -19,10 +19,11 @@ class EditCarMake extends React.Component {
                                       defaultValue={this.props.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
                                       ref={this.props.carMakesStore.editCarMakeAbrv}                      
                               />
-                                                  <br />
+                              <br />
+                      <button className="buttonUpdate" onClick={() => this.props.carMakesStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
 
-                              <button className="buttonUpdate" onChange={() => this.carMakesStore.editCarMake()}>Save Car Make Edit</button>
                     </form>
+
                       <Link to="/"><button className="buttonDelete">Close Make Editor</button></Link>
         </div>
       );}
