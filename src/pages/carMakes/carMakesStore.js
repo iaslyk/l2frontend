@@ -122,7 +122,7 @@ class CarMakesStore extends React.Component{
         this.getCarsMakeAsync()
     }
 
-    editCarMake = (id) => {
+    editCarMake(){
         this.updateCarsMakeAsync({
         carMakeName: this.editCarMakeName.current.value, 
         carMakeAbrv: this.editCarMakeAbrv.current.value,})

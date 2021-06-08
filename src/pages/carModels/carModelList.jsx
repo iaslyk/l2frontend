@@ -13,7 +13,7 @@ class CarModelList extends React.Component {
     return (
         <div>
             <p className="storeDetails">{this.props.carModelsStore.storeDetails}</p>
-            <input placeholder="Start typing model..."
+            <input className="searchField" placeholder="Search model..."
                  onKeyUp={this.props.carModelsStore.onChangeFilterModels} />
             <table>
                 <thead className="tableModelHead">

@@ -19,6 +19,7 @@ const AddCarMake = ({carMakesStore}) => {
 					              ref={carMakesStore.newCarMakeAbrv}
 				          />   
                 </form>
+				<br />
             <button className="buttonUpdate" onClick={() => carMakesStore.createCarMake(carMakesStore.newCarMakeName.current.value)}><Link to="/">Save New Car Make</Link></button>
 			      <button className="buttonDelete"><Link to="/">Close New Make Editor</Link></button>
     </div>
