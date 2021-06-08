@@ -34,7 +34,7 @@ class CarsModelService {
             headers,
             body: JSON.stringify(id)
         }
-        const request = new Request(urlCarsModel + "/" + id, options);
+        const request = new Request(urlCarsModel, options);
         const response = await fetch(request);
         return response;
     }

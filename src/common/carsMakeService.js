@@ -34,7 +34,7 @@ class CarsMakeService {
             headers,
             body: JSON.stringify(make)
         }
-        const request = new Request(urlcarsMake + '/' + make, options);
+        const request = new Request(urlcarsMake, options);
         const response = await fetch(request);
         return response;
     }

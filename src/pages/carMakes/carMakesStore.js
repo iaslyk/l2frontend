@@ -121,7 +121,10 @@ class CarMakesStore extends React.Component{
     }
 
     editCarMake = (id) => {
-        this.updateCarsMakeAsync(id);
+        this.updateCarsMakeAsync(id, {
+            carMakeName: this.editCarMakeName.current.value, 
+            carMakeAbrv: this.editCarMakeAbrv.current.value,}
+        );
     }
 
 

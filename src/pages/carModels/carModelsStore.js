@@ -135,7 +135,12 @@ class CarModelsStore extends React.Component {
     }
     
     editCarModel = (id) => {
-        this.updateCarsModelAsync(id)
+        this.updateCarsModelAsync(id,{
+            carModelName: this.editCarModelName.current.value,
+            carModelFuel: this.editCarModelFuel.current.value,
+            carModelInfo: this.editCarModelInfo.current.value,
+            carMake: this.editCarMakeModel.current.value
+        })
     };
 
     // Delete car model
