@@ -215,3 +215,70 @@
   text-align: center;
 }
 
+.pagination {
+  text-align: center;
+  display: inline-flex;
+  list-style-type: none;
+}
+
+.pagination a {
+  color: black;
+  text-align: center;
+  float: left;
+  padding: 8px 8px;
+  text-decoration: none;
+}
+
+.paginationButton {
+  background: #3D94F6;
+  background-image: -webkit-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -moz-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -ms-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -o-linear-gradient(top, #3D94F6, #1E62D0);
+  background-image: -webkit-gradient(to bottom, #3D94F6, #1E62D0);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  color: #FFFFFF;
+  font-size: 14px;
+  font-weight: 12;
+  padding: 3px;
+  border: solid #337FED 1px;
+  display: inline-flex;
+  cursor: pointer;
+  text-align: center;
+}
+
+.paginationButton:hover{
+  border: solid #337FED 1px;
+  background: #1E62D0;
+  background-image: -webkit-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -moz-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -ms-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -o-linear-gradient(top, #1E62D0, #3D94F6);
+  background-image: -webkit-gradient(to bottom, #1E62D0, #3D94F6);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 20px;
+  border-radius: 5px;
+  text-decoration: none;}
+
+.addInput {
+  height: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.addInputInfo {
+  width: 75%;
+  height: 20px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}

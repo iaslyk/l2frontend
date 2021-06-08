@@ -13,9 +13,10 @@ const Pagination = ({ modelsPerPage, totalCarsModel, paginate }) => {
             <ul className='pagination'>
                 {pageNumbers.map(number => (
                     <li key={number} className='page-item'>
-                        <Link onClick={() => paginate(number)} to='/carsModel/' className='page-link'>
+                        <button className="paginationButton"><Link onClick={() => paginate(number)} to='/carsModel/' className='page-link'>
                             {number}
                         </Link>
+                        </button>
                     </li>
                 ))}
             </ul>

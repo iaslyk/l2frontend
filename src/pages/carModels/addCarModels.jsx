@@ -20,7 +20,8 @@ class AddCarModel extends React.Component {
                           placeholder="Model Fuel"
                           ref={this.props.stores.carModelsStore.newCarModelFuel}
                     />
-                    <input className="addInput"
+                    <br />
+                    <input className="addInputInfo"
                           type="text"
                           placeholder="Model Info"
                           ref={this.props.stores.carModelsStore.newCarModelInfo}

@@ -20,7 +20,8 @@ class EditCarModel extends React.Component{
                                       defaultValue={this.props.stores.carModelsStore.carsModelData.carsModel[this.props.match.params.id].carModelFuel}
                                       ref={this.props.stores.carModelsStore.editCarModelFuel}                                                                            
                               />
-                              <input className="addInput"
+                              <br />
+                              <input className="addInputInfo"
                                       type="text"
                                       defaultValue={this.props.stores.carModelsStore.carsModelData.carsModel[this.props.match.params.id].carModelInfo}
                                       ref={this.props.stores.carModelsStore.editCarModelInfo}                                      

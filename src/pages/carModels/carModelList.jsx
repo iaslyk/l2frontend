@@ -51,16 +51,13 @@ class CarModelList extends React.Component {
                     })}
 
                 </tbody>
-                <Pagination
+                <tfoot className="tableModelFooter">
+                    <td className="pageSelection">Page: </td>
+                    <td><Pagination
                     modelsPerPage={this.props.carModelsStore.modelsPerPage}
                     totalCarsModel={this.props.carModelsStore.totalCarsModel}
                     paginate={this.props.carModelsStore.setPage}
-                />
-
-
-                <tfoot className="tableModelFooter">
-                    <td></td>
-                    <td></td>
+                /></td>
                     <td></td>
                     <Link to="/addcarmodel">
                         <button className="buttonUpdate">
@@ -68,7 +65,9 @@ class CarModelList extends React.Component {
                         </button>
                     </Link>
                 </tfoot>
+                
             </table>
+            
 
         </div>
     );
