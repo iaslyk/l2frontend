@@ -8,7 +8,8 @@ import {
 import React from 'react';
 import CarsModelService from '../../common/carsModelService'
 
-class CarModelsStore extends React.Component {
+
+class CarModelsStore {
     constructor(props){
         super(props);
         this.carsModelService = new CarsModelService();
@@ -48,8 +49,6 @@ class CarModelsStore extends React.Component {
     }
 
     
-
-
     getCarsModelAsync = async() => {
         try {
             const data = await this.carsModelService.get();
@@ -107,7 +106,6 @@ class CarModelsStore extends React.Component {
             })
         }
     }
-
     
     get Id(){
         const currentId = ++this.carsModelData.carsModel.slice(-1)[0].id;;
@@ -197,5 +195,6 @@ class CarModelsStore extends React.Component {
         return `We have ${this.totalCarsModel} car models`
     }
 };
+
 
 export default new CarModelsStore();

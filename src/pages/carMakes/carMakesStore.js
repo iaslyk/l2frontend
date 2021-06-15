@@ -8,10 +8,15 @@ import {
 import React from 'react';
 import CarsMakeService from '../../common/carsMakeService'
 
+
 class CarMakesStore extends React.Component{
     constructor(props){
         super(props);
         this.carsMakeService = new CarsMakeService();
+        this.carsMakeData = {    
+            carsMake: []
+        };
+        this.status = "Loading...";
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
@@ -27,12 +32,8 @@ class CarMakesStore extends React.Component{
             Id: computed
                 })
         }
-   
-    carsMakeData = {    
-        carsMake: []
-    };
-    status = "Loading...";
-
+ 
+        
     getCarsMakeAsync = async() => {
         try {
             const data = await this.carsMakeService.get();
@@ -127,11 +128,11 @@ class CarMakesStore extends React.Component{
         );
     }
 
-
     get storeDetails() {
         return `We have ${this.totalCarsMake} car makes.`
     }
 
 };
+
 
 export default new CarMakesStore();
