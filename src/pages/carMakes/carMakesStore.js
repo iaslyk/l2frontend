@@ -10,6 +10,7 @@ import CarsMakeService from '../../common/carsMakeService'
 
 
 class CarMakesStore{
+    
     constructor(){
         this.carsMakeService = new CarsMakeService();
         this.carsMakeData = {    

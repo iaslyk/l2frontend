@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 import Pagination from './pagination'
 
+
 class CarModelList extends React.Component {
     
     componentDidMount() {
@@ -74,7 +75,5 @@ class CarModelList extends React.Component {
 }
 };
 
+
 export default inject('stores') (observer(CarModelList));
-
-
-

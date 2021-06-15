@@ -2,7 +2,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
+
 class EditCarMake extends React.Component {
+  
   render(){
   return (
         <div className="App">
@@ -29,4 +31,5 @@ class EditCarMake extends React.Component {
       );}
     };
 
+    
 export default inject('stores') (observer(EditCarMake));

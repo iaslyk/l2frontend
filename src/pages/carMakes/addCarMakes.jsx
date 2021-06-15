@@ -2,7 +2,9 @@ import React from 'react';
 import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom';
 
+
 const AddCarMake = ({stores}) => {
+	
   return (
     <div className="App">
             
@@ -25,5 +27,6 @@ const AddCarMake = ({stores}) => {
     </div>
   );
 };
+
 
 export default inject('stores') (observer(AddCarMake));

@@ -1,6 +1,7 @@
 // services for carsMake
 const urlcarsMake  = 'http://localhost:3001/carsMake'
 
+
 class CarsMakeService {
     
     get = async () => {
@@ -49,10 +50,8 @@ class CarsMakeService {
         const request = new Request(urlcarsMake + "/" + id, options);
         const response = await fetch(request);
         return response;
-    }
-    
+    }    
 }
-    
 
 
 export default CarsMakeService;

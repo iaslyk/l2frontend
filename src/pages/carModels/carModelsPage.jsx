@@ -4,7 +4,9 @@ import '../../layouts/App.css';
 import { Component } from 'react';
 import { observer } from 'mobx-react';
 
+
 class CarModelsPage extends Component {
+
   render(){
   return (
     <div className="App">
@@ -14,5 +16,6 @@ class CarModelsPage extends Component {
   );
 }
 }
+
 
 export default (observer(CarModelsPage));

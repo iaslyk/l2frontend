@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+
 const Pagination = ({ modelsPerPage, totalCarsModel, paginate }) => {
+
     const pageNumbers = [];
     for (let i=1; i<=Math.ceil(totalCarsModel/modelsPerPage); i++) {
         pageNumbers.push(i);
@@ -23,5 +25,6 @@ const Pagination = ({ modelsPerPage, totalCarsModel, paginate }) => {
         </nav>
     )
 }
+
 
 export default Pagination;

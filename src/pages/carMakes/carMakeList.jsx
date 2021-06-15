@@ -2,6 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
+
 class CarMakeList extends React.Component {  
     
     componentDidMount() {
@@ -57,6 +58,5 @@ class CarMakeList extends React.Component {
 
 }
 
-// 
 
 export default inject('stores') (observer(CarMakeList));

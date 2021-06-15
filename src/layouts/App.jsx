@@ -10,7 +10,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import './App.css';
 import { Component } from 'react';
 
+
 class App extends Component {
+
   render() {
   return (
     <BrowserRouter>
@@ -25,12 +27,11 @@ class App extends Component {
           <Route exact path="/addcarmodel" component={AddCarModel} />
         </Switch>
       <FooterPage />
-
     </div>
-
     </BrowserRouter>
   );
 }
 }
+
 
 export default App;

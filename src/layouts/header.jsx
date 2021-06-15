@@ -1,7 +1,9 @@
 import React from 'react';
 import NavigationBar from './navBar'
 
+
 const HeaderPage = () => {
+
    return (
    <div className="Header">
         <h4>
@@ -10,5 +12,6 @@ const HeaderPage = () => {
 
     </div>)
 };
+
 
 export default HeaderPage;

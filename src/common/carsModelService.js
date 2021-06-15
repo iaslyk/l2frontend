@@ -1,6 +1,7 @@
 // services for carsModel
 const urlCarsModel = "http://localhost:3001/carsModel"
 
+
 class CarsModelService {
     
     get = async () => {
@@ -49,8 +50,8 @@ class CarsModelService {
         const request = new Request(urlCarsModel + "/" + id, options);
         const response = await fetch(request);
         return response;
-    }
-    
+    }  
 }
+
 
 export default CarsModelService;
