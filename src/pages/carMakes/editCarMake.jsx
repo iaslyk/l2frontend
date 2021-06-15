@@ -7,20 +7,20 @@ class EditCarMake extends React.Component {
   return (
         <div className="App">
                 
-                <h2>Edit {this.props.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
+                <h2>Edit {this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
                     <form className="addCarMake" >                      
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={this.props.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
-                                      ref={this.props.carMakesStore.editCarMakeName}
+                                      defaultValue={this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
+                                      ref={this.props.stores.carMakesStore.editCarMakeName}
                               />
                               <input className="addInput" 
                                       type="text"
-                                      defaultValue={this.props.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
-                                      ref={this.props.carMakesStore.editCarMakeAbrv}                      
+                                      defaultValue={this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
+                                      ref={this.props.stores.carMakesStore.editCarMakeAbrv}                      
                               />
                               <br />
-                      <button className="buttonUpdate" onClick={() => this.props.carMakesStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => this.props.stores.carMakesStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
 
                     </form>
 
@@ -29,4 +29,4 @@ class EditCarMake extends React.Component {
       );}
     };
 
-export default inject('carMakesStore') (observer(EditCarMake));
+export default inject('stores') (observer(EditCarMake));

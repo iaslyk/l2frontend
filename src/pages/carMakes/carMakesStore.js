@@ -9,9 +9,8 @@ import React from 'react';
 import CarsMakeService from '../../common/carsMakeService'
 
 
-class CarMakesStore extends React.Component{
-    constructor(props){
-        super(props);
+class CarMakesStore{
+    constructor(){
         this.carsMakeService = new CarsMakeService();
         this.carsMakeData = {    
             carsMake: []

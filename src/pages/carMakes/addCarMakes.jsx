@@ -2,7 +2,7 @@ import React from 'react';
 import { inject, observer } from 'mobx-react'
 import { Link } from 'react-router-dom';
 
-const AddCarMake = ({carMakesStore}) => {
+const AddCarMake = ({stores}) => {
   return (
     <div className="App">
             
@@ -11,19 +11,19 @@ const AddCarMake = ({carMakesStore}) => {
                   <input className="addInput"
 				              	type="text"
 					              placeholder="Make Name"
-					              ref={carMakesStore.newCarMakeName}
+					              ref={stores.carMakesStore.newCarMakeName}
 				          />
 				          <input className="addInput"
 					              type="text"
 					              placeholder="Make Abbreviation"
-					              ref={carMakesStore.newCarMakeAbrv}
+					              ref={stores.carMakesStore.newCarMakeAbrv}
 				          />   
                 </form>
 				<br />
-            <button className="buttonUpdate" onClick={() => carMakesStore.createCarMake(carMakesStore.newCarMakeName.current.value)}><Link to="/">Save New Car Make</Link></button>
+            <button className="buttonUpdate" onClick={() => stores.carMakesStore.createCarMake(stores.carMakesStore.newCarMakeName.current.value)}><Link to="/">Save New Car Make</Link></button>
 			      <button className="buttonDelete"><Link to="/">Close New Make Editor</Link></button>
     </div>
   );
 };
 
-export default inject('carMakesStore') (observer(AddCarMake));
+export default inject('stores') (observer(AddCarMake));
