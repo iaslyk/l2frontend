@@ -1,5 +1,5 @@
 // services for carsModel
-const urlCarsModel = "http://localhost:3001/carsModel"
+const urlCarsModel = "http://localhost:3001/carsModel/"
 
 
 class CarsModelService {
@@ -27,15 +27,15 @@ class CarsModelService {
         return response;
     }
 
-    put = async (id) => {
+    put = async (id, data) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
             method: "PUT",
             headers,
-            body: JSON.stringify(id)
+            body: JSON.stringify(data)
         }
-        const request = new Request(urlCarsModel, options);
+        const request = new Request(urlCarsModel + id, options);
         const response = await fetch(request);
         return response;
     }
@@ -47,7 +47,7 @@ class CarsModelService {
             method: "DELETE",
             headers
         }
-        const request = new Request(urlCarsModel + "/" + id, options);
+        const request = new Request(urlCarsModel + id, options);
         const response = await fetch(request);
         return response;
     }  

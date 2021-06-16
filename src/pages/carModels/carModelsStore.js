@@ -92,12 +92,14 @@ class CarModelsStore {
         }
     }
 
-    deleteCarModelAsync = (id) => {
+    deleteCarModelAsync = async(id) => {
         try {
-            const response = this.carsModelService.delete(id);
-            if (response.status === 204) {
+            const response = await this.carsModelService.delete(id);
+            const data = await this.carsModelService.get();
+            if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";
+                    this.carsModelData.carsModel = data;
                 })
             }
         } catch (error) {
@@ -106,11 +108,17 @@ class CarModelsStore {
             })
         }
     }
-    
+
     get Id(){
-        const currentId = ++this.carsModelData.carsModel.slice(-1)[0].id;;
-        return currentId
-    }
+        const make_length = this.carsModelData.carsModel.length
+        if (make_length === 0) {
+            const currentId = 0;
+            return currentId
+          } else {
+            const currentId = ++this.carsModelData.carsModel.slice(-1)[0].id;
+            return currentId
+          }
+        }
 
     newCarModelName = React.createRef();
     newCarModelFuel = React.createRef();
@@ -144,7 +152,6 @@ class CarModelsStore {
     // Delete car model
     deleteCarModel = async(carModelId) => {
         this.deleteCarModelAsync(carModelId);
-        this.getCarsModelAsync();
     }
 
     sortedModelNames(){

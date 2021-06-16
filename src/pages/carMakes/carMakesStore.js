@@ -77,12 +77,14 @@ class CarMakesStore{
         }
     }
 
-    deleteCarMakeAsync = (id) => {
+    deleteCarMakeAsync = async(id) =>{
         try {
-            const response = this.carsMakeService.delete(id);
-            if (response.status === 204) {
+            const response = await this.carsMakeService.delete(id);
+            const data = await this.carsMakeService.get();
+            if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";
+                    this.carsMakeData.carsMake = data;
                 })
             }
         } catch (error) {
@@ -103,11 +105,18 @@ class CarMakesStore{
     }
 
     get Id(){
-        const currentId = ++this.carsMakeData.carsMake.slice(-1)[0].id;
-        return currentId
-    }
+        const make_length = this.carsMakeData.carsMake.length
+        if (make_length === 0) {
+            const currentId = 0;
+            return currentId
+          } else {
+            const currentId = ++this.carsMakeData.carsMake.slice(-1)[0].id;
+            return currentId
+          }
+        }
+        
     // Create car make
-    createCarMake = () => {
+    createCarMake(){
         this.createCarMakeAsync({
             id: this.Id,
             carMakeName: this.newCarMakeName.current.value, 
@@ -116,12 +125,11 @@ class CarMakesStore{
     }
     
     // Delete car make
-    deleteCarMake = (carMakeId) => {
+    deleteCarMake(carMakeId){
         this.deleteCarMakeAsync(carMakeId)
-        this.getCarsMakeAsync()
     }
 
-    editCarMake = (id) => {
+    editCarMake(id){
         this.updateCarsMakeAsync(id, {
             carMakeName: this.editCarMakeName.current.value, 
             carMakeAbrv: this.editCarMakeAbrv.current.value,}

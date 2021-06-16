@@ -1,5 +1,5 @@
 // services for carsMake
-const urlcarsMake  = 'http://localhost:3001/carsMake'
+const urlcarsMake  = 'http://localhost:3001/carsMake/'
 
 
 class CarsMakeService {
@@ -27,15 +27,15 @@ class CarsMakeService {
         return response;
     }
 
-    put = async (make) => {
+    put = async (make, data) => {
         const headers = new Headers()
         headers.append("Content-Type", "application/json");
         var options = {
-            method: "PUT",
+            method: "PATCH",
             headers,
-            body: JSON.stringify(make)
+            body: JSON.stringify(data)
         }
-        const request = new Request(urlcarsMake, options);
+        const request = new Request(urlcarsMake + make, options);
         const response = await fetch(request);
         return response;
     }
@@ -47,7 +47,7 @@ class CarsMakeService {
             method: "DELETE",
             headers
         }
-        const request = new Request(urlcarsMake + "/" + id, options);
+        const request = new Request(urlcarsMake + id, options);
         const response = await fetch(request);
         return response;
     }    
