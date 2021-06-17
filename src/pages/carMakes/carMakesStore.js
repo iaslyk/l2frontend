@@ -21,16 +21,12 @@ class CarMakesStore{
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
-            //newCarMakeName: observable,
-            //newCarMakeAbrv: observable,
             editCarMakeName: observable,
             editCarMakeAbrv: observable,
-            //createCarMake: action,
             deleteCarMake: action,
             editCarMake: action,
             storeDetails: computed,
             totalCarsMake: computed,
-            //Id: computed
                 })
         }
  
@@ -47,21 +43,6 @@ class CarMakesStore{
             })
         }
     }
-    
-    //createCarMakeAsync = async (make) => {
-    //    try {
-    //        const response = await this.carsMakeService.post(make);
-    //        if (response.status === 201) {
-    //            runInAction(() => {
-    //                this.status = "Success";
-    //            })
-    //        }
-    //    } catch (error) {
-    //        runInAction(() => {
-    //            this.status = "error";
-    //        })
-    //    }
-    //}
 
     updateCarsMakeAsync = async(make) => {
         try {
@@ -95,8 +76,6 @@ class CarMakesStore{
         }
     }
 
-    //newCarMakeName = React.createRef();
-    //newCarMakeAbrv = React.createRef();
     editCarMakeName = React.createRef();
     editCarMakeAbrv = React.createRef();
 
@@ -105,26 +84,6 @@ class CarMakesStore{
         return this.carsMakeData.carsMake.length;
     }
 
-    //get Id(){
-    //    const make_length = this.carsMakeData.carsMake.length
-    //    if (make_length === 0) {
-    //        const currentId = 0;
-    //        return currentId
-    //      } else {
-    //        const currentId = ++this.carsMakeData.carsMake.slice(-1)[0].id;
-    //        return currentId
-    //      }
-    //    }
-    //    
-    // Create car make
-    //createCarMake(){
-    //    this.createCarMakeAsync({
-    //        id: this.Id,
-    //        carMakeName: this.newCarMakeName.current.value, 
-    //        carMakeAbrv: this.newCarMakeAbrv.current.value,}
-    //    );
-    //}
-    
     // Delete car make
     deleteCarMake(carMakeId){
         this.deleteCarMakeAsync(carMakeId)
