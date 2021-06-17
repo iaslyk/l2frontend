@@ -13,16 +13,16 @@ const AddCarMake = ({stores}) => {
                   <input className="addInput"
 				              	type="text"
 					              placeholder="Make Name"
-					              ref={stores.carMakesStore.newCarMakeName}
+					              ref={stores.addCarMakeStore.newCarMakeName}
 				          />
 				          <input className="addInput"
 					              type="text"
 					              placeholder="Make Abbreviation"
-					              ref={stores.carMakesStore.newCarMakeAbrv}
+					              ref={stores.addCarMakeStore.newCarMakeAbrv}
 				          />   
                 </form>
 				<br />
-            <button className="buttonUpdate" onClick={() => stores.carMakesStore.createCarMake(stores.carMakesStore.newCarMakeName.current.value)}><Link to="/">Save New Car Make</Link></button>
+            <button className="buttonUpdate" onClick={() => stores.addCarMakeStore.createCarMake(stores.addCarMakeStore.newCarMakeName.current.value)}><Link to="/">Save New Car Make</Link></button>
 			      <button className="buttonDelete"><Link to="/">Close New Make Editor</Link></button>
     </div>
   );
