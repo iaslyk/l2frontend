@@ -13,6 +13,7 @@ class CarMakesStore{
     
     constructor(){
         this.carsMakeService = new CarsMakeService();
+        this.getCarsMakeAsync()
         this.carsMakeData = {    
             carsMake: []
         };

@@ -13,6 +13,7 @@ class CarModelsStore {
     
     constructor(){
         this.carsModelService = new CarsModelService();
+        this.getCarsModelAsync()
         this.carsModelData = {
             carsModel: []
         }

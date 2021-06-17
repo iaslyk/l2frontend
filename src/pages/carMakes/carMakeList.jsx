@@ -5,11 +5,6 @@ import { Link } from 'react-router-dom';
 
 class CarMakeList extends React.Component {  
     
-    componentDidMount() {
-        this.props.stores.carMakesStore.getCarsMakeAsync();
-    }
-
-    
     render() {
     return (
     <div>

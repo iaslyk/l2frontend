@@ -6,10 +6,6 @@ import Pagination from './pagination'
 
 class CarModelList extends React.Component {
     
-    componentDidMount() {
-        this.props.stores.carModelsStore.getCarsModelAsync();
-    }
-  
     render() {
     return (
         <div>
