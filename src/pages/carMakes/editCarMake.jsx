@@ -9,20 +9,20 @@ class EditCarMake extends React.Component {
   return (
         <div className="App">
                 
-                <h2>Edit {this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
+                <h2>Edit {this.props.stores.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
                     <form className="addCarMake" >                      
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
-                                      ref={this.props.stores.carMakesStore.editCarMakeName}
+                                      defaultValue={this.props.stores.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
+                                      ref={this.props.stores.editCarMakeStore.editCarMakeName}
                               />
                               <input className="addInput" 
                                       type="text"
-                                      defaultValue={this.props.stores.carMakesStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
-                                      ref={this.props.stores.carMakesStore.editCarMakeAbrv}                      
+                                      defaultValue={this.props.stores.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
+                                      ref={this.props.stores.editCarMakeStore.editCarMakeAbrv}                      
                               />
                               <br />
-                      <button className="buttonUpdate" onClick={() => this.props.stores.carMakesStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => this.props.stores.editCarMakeStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
 
                     </form>
 

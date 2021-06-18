@@ -1,6 +1,4 @@
 import {
-    action,
-    computed,
     makeObservable,
     observable,
     runInAction
@@ -11,7 +9,7 @@ import CarsMakeService from '../../common/carsMakeService'
 
 
 
-class AddCarModelStore {
+class EditCarModelsStore {
     
     constructor(){
         this.carsModelService = new CarsModelService();
@@ -27,12 +25,11 @@ class AddCarModelStore {
         this.status = "Loading..."
         makeObservable(this, {
             carsModelData: observable,
-            newCarModelName: observable,
-            newCarModelFuel: observable,
-            newCarModelInfo: observable,
-            carMakeModel: observable,
-            createCarModel: action,
-            Id: computed,
+            status: observable,
+            editCarModelName: observable,
+            editCarModelFuel: observable,
+            editCarModelInfo: observable,
+            editCarMakeModel: observable,
         });
     }
 
@@ -62,11 +59,11 @@ class AddCarModelStore {
             })
         }
     }
-    
-    createCarModelAsync = async (model) => {
+
+    updateCarsModelAsync = async(model) => {
         try {
-            const response = await this.carsModelService.post(model);
-            if (response.status === 201) {
+            const response = await this.carsModelService.put(model);
+            if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";
                 })
@@ -77,35 +74,24 @@ class AddCarModelStore {
             })
         }
     }
+ 
+    editCarModelName = React.createRef();
+    editCarModelFuel = React.createRef();
+    editCarModelInfo = React.createRef();
+    editCarMakeModel = React.createRef();
+    
 
-    get Id(){
-        const make_length = this.carsModelData.carsModel.length
-        if (make_length === 0) {
-            const currentId = 0;
-            return currentId
-          } else {
-            const currentId = ++this.carsModelData.carsModel.slice(-1)[0].id;
-            return currentId
-          }
-        }
+    editCarModel = (id) => {
+        this.updateCarsModelAsync(id,{
+            carModelName: this.editCarModelName.current.value,
+            carModelFuel: this.editCarModelFuel.current.value,
+            carModelInfo: this.editCarModelInfo.current.value,
+            carMake: this.editCarMakeModel.current.value
+        })
+    };
 
-    newCarModelName = React.createRef();
-    newCarModelFuel = React.createRef();
-    newCarModelInfo = React.createRef();
-    carMakeModel = React.createRef();
-
-    // Create car model
-    createCarModel = () => {
-        this.createCarModelAsync({
-            id: this.Id,
-            carModelName: this.newCarModelName.current.value,
-            carModelFuel: this.newCarModelFuel.current.value,
-            carModelInfo: this.newCarModelInfo.current.value,
-            carMake: this.carMakeModel.current.value
-        });
-    }
 
 };
 
 
-export default new AddCarModelStore();
+export default new EditCarModelsStore();

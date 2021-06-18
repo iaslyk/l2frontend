@@ -1,14 +1,18 @@
 import carMakesStore from '../pages/carMakes/carMakesStore';
-import carModelsStore from '../pages/carModels/carModelsStore'
 import addCarMakeStore from '../pages/carMakes/addCarMakeStore'
+import editCarMakeStore from '../pages/carMakes/editCarMakeStore';
+import carModelsStore from '../pages/carModels/carModelsStore'
 import addCarModelStore from '../pages/carModels/addCarModelStore';
+import editCarModelStore from '../pages/carModels/editCarModelStore';
 
 
 const RootStore = {
     carMakesStore,
     addCarMakeStore,
+    editCarMakeStore,
     carModelsStore,
-    addCarModelStore
+    addCarModelStore,
+    editCarModelStore
 }
 
 

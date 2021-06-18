@@ -1,14 +1,15 @@
 import {
     action,
-    computed,
     makeObservable,
     observable,
     runInAction
 } from 'mobx';
+import React from 'react';
 import CarsMakeService from '../../common/carsMakeService'
 
 
-class CarMakesStore{
+
+class EditCarMakesStore{
     
     constructor(){
         this.carsMakeService = new CarsMakeService();
@@ -20,13 +21,12 @@ class CarMakesStore{
         makeObservable(this, {
             carsMakeData: observable,
             status: observable,
-            deleteCarMake: action,
-            storeDetails: computed,
-            totalCarsMake: computed,
+            editCarMakeName: observable,
+            editCarMakeAbrv: observable,
+            editCarMake: action,
                 })
         }
- 
-        
+
     getCarsMakeAsync = async() => {
         try {
             const data = await this.carsMakeService.get();
@@ -39,39 +39,33 @@ class CarMakesStore{
             })
         }
     }
-
-    deleteCarMakeAsync = async(id) =>{
+ 
+    updateCarsMakeAsync = async(make) => {
         try {
-            const response = await this.carsMakeService.delete(id);
-            const data = await this.carsMakeService.get();
+            const response = await this.carsMakeService.put(make);
             if (response.status === 200) {
                 runInAction(() => {
                     this.status = "Success";
-                    this.carsMakeData.carsMake = data;
                 })
             }
         } catch (error) {
             runInAction(() => {
-                this.status = "error"
+                this.status = "error";
             })
         }
     }
 
-    // Get total number of car makes
-    get totalCarsMake() {
-        return this.carsMakeData.carsMake.length;
-    }
+    editCarMakeName = React.createRef();
+    editCarMakeAbrv = React.createRef();
 
-    // Delete car make
-    deleteCarMake(carMakeId){
-        this.deleteCarMakeAsync(carMakeId)
-    }
-
-    get storeDetails() {
-        return `We have ${this.totalCarsMake} car makes.`
+    editCarMake(id){
+        this.updateCarsMakeAsync(id, {
+            carMakeName: this.editCarMakeName.current.value, 
+            carMakeAbrv: this.editCarMakeAbrv.current.value,}
+        );
     }
 
 };
 
 
-export default new CarMakesStore();
+export default new EditCarMakesStore();
