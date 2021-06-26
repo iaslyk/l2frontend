@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom';
 
 class CarMakeList extends React.Component {  
     
+    
     render() {
     return (
     <div>
-        <p className="storesDetails">{this.props.stores.carMakesStore.storeDetails}</p>
+        <p className="storesDetails">{this.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -19,7 +20,7 @@ class CarMakeList extends React.Component {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {this.props.stores.carMakesStore.carsMakeData.carsMake.map((carMake) => {
+                {this.carsMakeData.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             
@@ -30,7 +31,7 @@ class CarMakeList extends React.Component {
                                 
                             </td>
                             <td>
-                            <button onClick={() => this.props.stores.carMakesStore.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
+                            <button onClick={() => this.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
                             </td>
                         </tr>
                     )
@@ -54,4 +55,4 @@ class CarMakeList extends React.Component {
 }
 
 
-export default inject('stores') (observer(CarMakeList));
+export default inject(stores => ({carMakesStore: stores.carMakesStore})) (observer(CarMakeList));

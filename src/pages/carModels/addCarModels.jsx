@@ -45,4 +45,4 @@ const AddCarModel =({stores}) => {
     );}
 
 
-export default inject('stores') (observer(AddCarModel));
+export default inject(stores => ({addCarModelStore: stores.addCarModelStore, carMakeId: stores.carMakesStore.id})) (observer(AddCarModel));

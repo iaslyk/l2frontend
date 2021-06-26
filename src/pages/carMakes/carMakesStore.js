@@ -27,7 +27,7 @@ class CarMakesStore{
         }
  
         
-    getCarsMakeAsync = async() => {
+    async getCarsMakeAsync(){
         try {
             const data = await this.carsMakeService.get();
             runInAction(() => {
@@ -40,7 +40,7 @@ class CarMakesStore{
         }
     }
 
-    deleteCarMakeAsync = async(id) =>{
+    async deleteCarMakeAsync(id){
         try {
             const response = await this.carsMakeService.delete(id);
             const data = await this.carsMakeService.get();

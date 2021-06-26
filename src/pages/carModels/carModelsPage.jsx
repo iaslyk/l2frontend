@@ -11,7 +11,7 @@ class CarModelsPage extends Component {
   return (
     <div className="App">
         <h2 className="storeModelTitle">Car Models</h2>
-       <CarModelList store={carModelsStore} />
+       <CarModelList stores={carModelsStore} />
     </div>
   );
 }
