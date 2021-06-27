@@ -3,13 +3,11 @@ import { inject, observer } from 'mobx-react';
 import { Link } from 'react-router-dom';
 
 
-class CarMakeList extends React.Component {  
+const CarMakeList = ({stores}) => {
     
-    
-    render() {
     return (
     <div>
-        <p className="storesDetails">{this.storeDetails}</p>
+        <p className="storesDetails">{stores.storeDetails}</p>
         <table>
             <thead className="tableMakeHead">
                 <tr>
@@ -20,7 +18,7 @@ class CarMakeList extends React.Component {
                 </tr>
             </thead>
             <tbody className="tableMakeBody">
-                {this.carsMakeData.carsMake.map((carMake) => {
+                {stores.carsMakeData.carsMake.map((carMake) => {
                     return (
                         <tr key={carMake.id}>
                             
@@ -31,7 +29,7 @@ class CarMakeList extends React.Component {
                                 
                             </td>
                             <td>
-                            <button onClick={() => this.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
+                            <button onClick={() => stores.deleteCarMake(carMake.id)} className="buttonDelete">Delete {carMake.carMakeAbrv}</button>
                             </td>
                         </tr>
                     )
@@ -52,7 +50,6 @@ class CarMakeList extends React.Component {
     </div>
     )}
 
-}
 
 
 export default inject(stores => ({carMakesStore: stores.carMakesStore})) (observer(CarMakeList));

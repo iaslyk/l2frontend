@@ -9,20 +9,20 @@ class EditCarMake extends React.Component {
   return (
         <div className="App">
                 
-                <h2>Edit {this.props.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
+                <h2>Edit {this.props.stores.carsMakeData.carsMake[this.props.match.params.id].carMakeName}</h2>
                     <form className="addCarMake" >                      
                       <input className="addInput"
                                       type="text"
-                                      defaultValue={this.props.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
-                                      ref={this.props.editCarMakeStore.editCarMakeName}
+                                      defaultValue={this.props.stores.carsMakeData.carsMake[this.props.match.params.id].carMakeName}
+                                      ref={this.props.stores.editCarMakeName}
                               />
                               <input className="addInput" 
                                       type="text"
-                                      defaultValue={this.props.editCarMakeStore.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
-                                      ref={this.props.editCarMakeStore.editCarMakeAbrv}                      
+                                      defaultValue={this.props.stores.carsMakeData.carsMake[this.props.match.params.id].carMakeAbrv}
+                                      ref={this.props.stores.editCarMakeAbrv}                      
                               />
                               <br />
-                      <button className="buttonUpdate" onClick={() => this.props.editCarMakeStore.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
+                      <button className="buttonUpdate" onClick={() => this.props.stores.editCarMake(this.props.match.params.id)}><Link to="/">Save Car Make Edit</Link></button>
 
                     </form>
 

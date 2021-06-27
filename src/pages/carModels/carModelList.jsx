@@ -4,30 +4,29 @@ import { Link } from 'react-router-dom';
 import Pagination from './pagination'
 
 
-class CarModelList extends React.Component {
+const CarModelList = ({stores}) => {
     
-    render() {
     return (
         <div>
-            <p className="storeDetails">{this.storeDetails}</p>
+            <p className="storeDetails">{stores.storeDetails}</p>
             <input className="searchField" placeholder="Search model..."
-                 onKeyUp={this.onChangeFilterModels} />
+                 onKeyUp={stores.onChangeFilterModels} />
             <table>
                 <thead className="tableModelHead">
                     <tr>
                         <th>Car Model Name <br />
-                            <button onClick={() => this.sortedModelNames()} className="buttonSort">&uarr;</button>
-                            <button onClick={() => this.reverseSortedModelNames()} className="buttonSort">&darr;</button>                     
+                            <button onClick={() => stores.sortedModelNames()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => stores.reverseSortedModelNames()} className="buttonSort">&darr;</button>                     
                         </th>
                         <th>Fuel Type <br />
-                            <button onClick={() => this.sortedModelFuel()} className="buttonSort">&uarr;</button>
-                            <button onClick={() => this.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
+                            <button onClick={() => stores.sortedModelFuel()} className="buttonSort">&uarr;</button>
+                            <button onClick={() => stores.reverseSortedModelFuel()} className="buttonSort">&darr;</button></th>
                         <th>Car Make</th>
                         <th>Car Model Info</th>
                     </tr>
                 </thead>
                 <tbody className="tableModelBody">
-                    {this.filteredModels.map((carModel) => {
+                    {stores.filteredModels.map((carModel) => {
                         return (
                             <tr key={carModel.id} className="tableModelBody">
                                 <td>{carModel.carModelName}</td>
@@ -40,7 +39,7 @@ class CarModelList extends React.Component {
                                 <Link exact to={`/carsModel/${carModel.id}`}><button className="buttonUpdate">Update {carModel.carModelName}</button></Link>
                                 </td>
                                 <td>
-                                <button onClick={() => this.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>
+                                <button onClick={() => stores.deleteCarModel(carModel.id)} className="buttonDelete">Delete {carModel.carModelName}</button>
                                 </td>
 
                             </tr>
@@ -51,9 +50,9 @@ class CarModelList extends React.Component {
                 <tfoot className="tableModelFooter">
                     <td className="pageSelection">Page: </td>
                     <td><Pagination
-                    modelsPerPage={this.modelsPerPage}
-                    totalCarsModel={this.totalCarsModel}
-                    paginate={this.setPage}
+                    modelsPerPage={stores.modelsPerPage}
+                    totalCarsModel={stores.totalCarsModel}
+                    paginate={stores.setPage}
                 /></td>
                     <td></td>
                     <Link to="/addcarmodel">
@@ -69,7 +68,6 @@ class CarModelList extends React.Component {
         </div>
     );
 }
-};
 
 
-export default inject(stores => ({carModelsStore: stores.carModelsStore, carMakeId: stores.carMakesStore.id})) (observer(CarModelList));
+export default inject(stores => ({carModelsStore: stores.carModelsStore})) (observer(CarModelList));
