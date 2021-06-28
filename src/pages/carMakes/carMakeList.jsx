@@ -52,4 +52,4 @@ const CarMakeList = ({stores}) => {
 
 
 
-export default inject(stores => ({carMakesStore: stores.carMakesStore})) (observer(CarMakeList));
+export default inject(carMakesStore => ({carMakesStore: carMakesStore})) (observer(CarMakeList));
